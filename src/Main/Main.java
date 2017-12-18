@@ -1,4 +1,4 @@
-package hw0;
+package Main;
 
 import java.io.File;
 
@@ -8,6 +8,14 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import Filters.Filter;
+import Objects.Point3D;
+import Objects.WiFiList;
+import Tools.CreateCsv;
+import Tools.CreateKml;
+import Tools.readcsv;
+import algorithms.algorithm1;
 
 public class Main {
 
@@ -22,9 +30,9 @@ public class Main {
 		Point3D place = null;
 		String FileName;
 
-		File folder = new File("C:\\Users\\RoniGu\\Desktop\\CSVFile");
+		File folder = new File("C:\\Users\\RoniGu\\git\\OOP\\CSVFile");
 		ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(folder);
-		writerCsv.WriterCsv(Wifilist, "InitCsv");
+		CreateCsv.WriterCsv(Wifilist, "InitCsv");
 
 		Filter filter = null;
 
@@ -44,8 +52,8 @@ public class Main {
 			SSID = sc.next();
 			filter = new Filter("SSID", SSID);
 			FileName = "SSIDCSV";
-			writerCsv.WriteByFilter(Wifilist, filter, FileName);
-			writerCsv.make10List(Wifilist);
+			CreateCsv.WriteByFilter(Wifilist, filter, FileName);
+			CreateCsv.make10List(Wifilist);
 		}
 			break;
 		case 2: {
@@ -56,8 +64,8 @@ public class Main {
 			end = sc.nextLine();
 			filter = new Filter("Date", start + ";" + end);
 			FileName = "TimeCSV";
-			writerCsv.WriteByFilter(Wifilist, filter, FileName);
-			writerCsv.make10List(Wifilist);
+			CreateCsv.WriteByFilter(Wifilist, filter, FileName);
+			CreateCsv.make10List(Wifilist);
 		}
 			break;
 		case 3: {
@@ -73,22 +81,22 @@ public class Main {
 			place = new Point3D(lat, lon, 0);
 			filter = new Filter("Distance", place, distance);
 			FileName = "DistanceCSV";
-			writerCsv.WriteByFilter(Wifilist, filter, FileName);
-			writerCsv.make10List(Wifilist);
+			CreateCsv.WriteByFilter(Wifilist, filter, FileName);
+			CreateCsv.make10List(Wifilist);
 			break;
 		}
 		
 		case 4: {
 			
-			writerCsv.WriterCsv(Algoritim1.Algoritim((Wifilist)),"CsvByMac");
-			
+			CreateCsv.WriterCsv(algorithm1.algorithm((Wifilist)),"CsvByMac");
+			CreateCsv.make10List(Wifilist);
 		}
 			break;
 
 		
 		case 5: {
 			
-			writerCsv.make10List(Wifilist);
+			CreateCsv.make10List(Wifilist);
 			
 		}
 			break;
@@ -96,7 +104,7 @@ public class Main {
 		}
 		sc.close();
 
-		String finalCsv = "C:\\Users\\RoniGu\\Desktop\\CSVFile\\FinalCsv\\FinalCSV.csv";
+		String finalCsv = "C:\\Users\\RoniGu\\git\\OOP\\CSVFile\\BM1\\FinalCsv\\FinalCSV.csv";
 		File file1 = new File(finalCsv);
 		CreateKml.csvtokml(file1);
 
@@ -104,8 +112,5 @@ public class Main {
 		
 	}
 
-	private static void Algoritim1(ArrayList<WiFiList> wifilist) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

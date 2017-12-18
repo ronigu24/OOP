@@ -1,13 +1,17 @@
-package hw0;
+package algorithms;
 //////
 
 import java.util.ArrayList;
 
-public class Algoritim1 {
+import Objects.Point3D;
+import Objects.Router;
+import Objects.WiFiList;
+
+public class algorithm1 {
 
 
 
-	public static ArrayList<WiFiList> Algoritim (ArrayList<WiFiList> CsvFile)
+	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile)
 	{
 		Router[] routers= new Router[10];
 		int counter=1;

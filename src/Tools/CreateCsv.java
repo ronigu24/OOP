@@ -1,4 +1,4 @@
-package hw0;
+package Tools;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+import Filters.Filter;
+import Objects.Point3D;
+import Objects.WiFi;
+import Objects.WiFiList;
+
 /**
 * This class write Csv file
 */
 
 
-public class writerCsv {
+public class CreateCsv {
 
 	/**
 	* This function gets arrayList<wifiList> and create new united CSV.
@@ -107,7 +112,7 @@ public class writerCsv {
 			}
 
 		}
-		writerCsv.WriterCsv(One_Csv_File, FileName);
+		CreateCsv.WriterCsv(One_Csv_File, FileName);
 
 	}
 

@@ -1,4 +1,4 @@
-package hw0;
+package Objects;
 
 /**
  *	WifiList Class, Holds all the relevant info for each network.

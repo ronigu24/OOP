@@ -7,7 +7,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import hw0.WiFi;
+import Objects.WiFi;
 
 
 

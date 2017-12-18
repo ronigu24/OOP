@@ -5,8 +5,7 @@ package test;
 	import static org.junit.Assert.*;
 	import org.junit.Test;
 
-	
-import hw0.Point3D;
+import Objects.Point3D;
 
 	public class Point3DTest {
 		
