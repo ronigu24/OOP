@@ -1,4 +1,4 @@
-package Main;
+package Main2;
 
 import java.io.File;
 
@@ -30,7 +30,7 @@ public class Main {
 		Point3D place = null;
 		String FileName;
 
-		File folder = new File("C:\\Users\\RoniGu\\git\\OOP1\\CSVFile");
+		File folder = new File("C:\\Users\\RoniGu\\git\\OOP1\\CSVFile\\BM1");
 		ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(folder);
 		CreateCsv.WriterCsv(Wifilist, "InitCsv");
 

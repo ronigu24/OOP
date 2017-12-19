@@ -82,7 +82,7 @@ public class CreateKml {
 			str = br.readLine();
 
 		}
-		String KmlFile = "C:\\Users\\Omri Baruch\\Desktop\\CSVFile\\KMLFile\\kmlFile";
+		String KmlFile = "C:\\Users\\RoniGu\\git\\OOP1\\CSVFile\\KMLFile\\kmlFile";
 		try {
 			kml.marshal(new File(KmlFile));
 			System.out.println("kml create");

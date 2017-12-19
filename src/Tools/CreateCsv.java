@@ -28,7 +28,7 @@ public class CreateCsv {
 		StringBuilder builder = new StringBuilder();
 		PrintWriter pw = null;
 		try {
-			String finalCsv = "C:\\Users\\RoniGu\\Desktop\\CSVFile\\OneCsv\\" + name + ".csv";
+			String finalCsv = "C:\\Users\\RoniGu\\git\\OOP1\\CSVFile\\" + name + ".csv";
 			pw = new PrintWriter(new File(finalCsv));
 			builder.append("Id,Time,Lat,Lon,Alt,SSID,MAC,Channel,Signal");
 			builder.append("\n");
@@ -126,7 +126,7 @@ public class CreateCsv {
 		StringBuilder builder = new StringBuilder();
 		PrintWriter pw = null;
 		try {
-			String finalCsv = "C:\\Users\\RoniGu\\Desktop\\CSVFile\\FinalCsv\\FinalCSV.csv";
+			String finalCsv = "C:\\Users\\RoniGu\\git\\OOP1\\CSVFile\\FinalCsv\\FinalCSV.csv";
 			pw = new PrintWriter(new File(finalCsv));
 			builder.append(
 					"Id,Time,Lat,Lon,Alt,#WiFi,SSID1,MAC1,Channel1,Signal1,SSID2,MAC2,Channel2,Signal2,SSID3,MAC3,Channel3,Signal3,SSID4,MAC4,Channel4,Signal4,SSID5,MAC5,Channel5,Signal5,SSID6,MAC6,Channel6,Signal6,SSID7,MAC7,Channel7,Signal7,SSID8,MAC8,Channel8,Signal8,SSID9,MAC9,Channel9,Signal9,SSID10,MAC10,Channel10,Signal10");
@@ -145,11 +145,7 @@ public class CreateCsv {
 
 		}
 	}
-	
-	private static void WriterByMac(ArrayList<WiFiList> CsvFile) {
 		
 		
-		
-	}
 	
 }
