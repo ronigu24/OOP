@@ -30,7 +30,7 @@ public class Main {
 		Point3D place = null;
 		String FileName;
 
-		File folder = new File("C:\\Users\\RoniGu\\git\\OOP\\CSVFile");
+		File folder = new File("C:\\Users\\RoniGu\\git\\OOP1\\CSVFile");
 		ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(folder);
 		CreateCsv.WriterCsv(Wifilist, "InitCsv");
 
