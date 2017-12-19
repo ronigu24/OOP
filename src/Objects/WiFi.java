@@ -29,6 +29,7 @@ public class WiFi implements Comparable<WiFi> {
 		this.MAC = "";
 		this.channel = 0;
 		this.signal = 0;
+		
 	}
 
 	/**

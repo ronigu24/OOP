@@ -21,9 +21,9 @@ import Objects.WiFiList;
 
 
 /**
- * This function gets folder file. from this folder take only files with Csv suffix,
- *  read them and creates ArrayList<WiFiList>.
- *  this ArrayList contains: id,date,point3d,and Arraylist of wifi.
+ @author This function gets folder file. from this folder take only files with Csv suffix,
+   read them and creates ArrayList<WiFiList>.
+   this ArrayList contains: id,date,point3d,and Arraylist of wifi.
 
  * 
  *  

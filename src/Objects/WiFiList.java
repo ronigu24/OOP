@@ -1,8 +1,8 @@
 package Objects;
 
 /**
- *	WifiList Class, Holds all the relevant info for each network.
- *  Each WifiList has number of variables: id,date,point3d,and Arraylist of wifi.
+ @author Omri	WifiList Class, Holds all the relevant info for each network.
+ *  			Each WifiList has number of variables: id,date,point3d,and Arraylist of wifi.
  */
 
 import java.text.SimpleDateFormat;
@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Date;
 
 public class WiFiList implements Comparable<WiFiList> {
+	
 	private static int id = 0;
 	private int uid;
 	private Date timeStamp;
@@ -38,8 +39,8 @@ public class WiFiList implements Comparable<WiFiList> {
 	}
 	
 	/**
-	*private function  create arraylist of wifi,and contain up to 10 
-	*best wifi by signal. 
+	@param private function  create arraylist of wifi,and contain up to 10 
+	 best wifi by signal. 
 	*/
 
 	private void removeTo10() {
@@ -54,9 +55,7 @@ public class WiFiList implements Comparable<WiFiList> {
 		array.add(wifi);
 	}
 	/**
-	*sort array of wifi by signal
-	* 
-	*  
+	@param sort array of wifi by signal  
 	*/
 	public void SortSignal() {
 		Collections.sort(array);
@@ -73,8 +72,8 @@ public class WiFiList implements Comparable<WiFiList> {
 
 	
 	 /**
-	   * this function compare between 2 wifilist by date and point3d.
-	   * if they equals return true, else false;
+	   @param this function compare between 2 wifilist by date and point3d.
+	    if they equals return true, else false;
 	   */
 	public boolean compare(Date timeStamp, Point3D point) {
 		return this.timeStamp.compareTo(timeStamp) == 0 && this.point.getLat() == point.getLat()

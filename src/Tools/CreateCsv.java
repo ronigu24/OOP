@@ -6,29 +6,27 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-
 import Filters.Filter;
 import Objects.Point3D;
 import Objects.WiFi;
 import Objects.WiFiList;
+import de.micromata.opengis.kml.v_2_2_0.Folder;
 
 /**
-* This class write Csv file
-*/
-
+ * This class write Csv file
+ */
 
 public class CreateCsv {
 
 	/**
-	* This function gets arrayList<wifiList> and create new united CSV.
-	*/
+	 @param This function gets arrayList<wifiList> and create new united CSV.
+	 */
 
-	
-	public static void WriterCsv(ArrayList<WiFiList> CsvFile, String name) {
+	public static void WriterCsv(ArrayList<WiFiList> CsvFile, String name,File folder) {
 		StringBuilder builder = new StringBuilder();
 		PrintWriter pw = null;
 		try {
-			String finalCsv = "C:\\Users\\RoniGu\\git\\OOP1\\CSVFile\\" + name + ".csv";
+			String finalCsv = folder +"\\OneCsv\\" + name + ".csv";
 			pw = new PrintWriter(new File(finalCsv));
 			builder.append("Id,Time,Lat,Lon,Alt,SSID,MAC,Channel,Signal");
 			builder.append("\n");
@@ -40,7 +38,7 @@ public class CreateCsv {
 			}
 			pw.write(builder.toString());
 			pw.close();
-			System.out.println("Done  ");
+			
 		} catch (
 
 		FileNotFoundException e) {
@@ -50,14 +48,14 @@ public class CreateCsv {
 	}
 
 	/**
-	* This function gets arrayList<wifiList>, and unite wifi's that have the same date and cordination
-	* to arraylist of wifi.
-	* go to Write function to create CSV.
-	* 
-	*  
-	*/
-	
-	public static void make10List(ArrayList<WiFiList> One_Csv_File) {
+	 * This function gets arrayList<wifiList>, and unite wifi's that have the
+	 * same date and cordination to arraylist of wifi. go to Write function to
+	 * create CSV.
+	 * 
+	 * 
+	 */
+
+	public static void make10List(ArrayList<WiFiList> One_Csv_File,File folder) {
 		ArrayList<WiFiList> result = new ArrayList<WiFiList>();
 		WiFiList.resetID();
 		WiFiList wifilist = null;
@@ -92,16 +90,18 @@ public class CreateCsv {
 			wifilist.add(newwifi);
 		}
 		Collections.sort(result);
-		WritertoFinalCsv(result);
+		WritertoFinalCsv(result,folder);
 
 	}
-	
-	/**
-	*  get filter ,file name and arrayList<wifiList>, and create new CSV who filtered by this filter.
-	* the file name will be the name of the Csv file. 
-	*/
 
-	public static void WriteByFilter(ArrayList<WiFiList> One_Csv_File, Filter filter, String FileName) {
+	/**
+	 * @param get
+	 *            filter ,file name and arrayList<wifiList>, and create new CSV
+	 *            who filtered by this filter. the file name will be the name of
+	 *            the Csv file.
+	 */
+
+	public static void WriteByFilter(ArrayList<WiFiList> One_Csv_File, Filter filter, String FileName,File folder) {
 
 		for (int i = 0; i < One_Csv_File.size(); i++) {
 			if (false == filter.isFit(One_Csv_File.get(i)) && One_Csv_File.get(i) != null) {
@@ -112,21 +112,22 @@ public class CreateCsv {
 			}
 
 		}
-		CreateCsv.WriterCsv(One_Csv_File, FileName);
+		CreateCsv.WriterCsv(One_Csv_File, FileName,folder);
 
 	}
 
 	/**
-	*  get arrayList<wifiList>, and create new CSV.
-	* the new csv will represent wifi networks
-	*  that united to same line if they have same date and cordinations. 
-	*/
-	
-	private static void WritertoFinalCsv(ArrayList<WiFiList> CsvFile) {
+	 * @param get
+	 *            arrayList<wifiList>, and create new CSV. the new csv will
+	 *            represent wifi networks that united to same line if they have
+	 *            same date and cordinations.
+	 */
+
+	private static void WritertoFinalCsv(ArrayList<WiFiList> CsvFile,File folder) {
 		StringBuilder builder = new StringBuilder();
 		PrintWriter pw = null;
 		try {
-			String finalCsv = "C:\\Users\\RoniGu\\git\\OOP1\\CSVFile\\FinalCsv\\FinalCSV.csv";
+			String finalCsv = folder+"\\FinalCsv\\FinalCSV.csv";
 			pw = new PrintWriter(new File(finalCsv));
 			builder.append(
 					"Id,Time,Lat,Lon,Alt,#WiFi,SSID1,MAC1,Channel1,Signal1,SSID2,MAC2,Channel2,Signal2,SSID3,MAC3,Channel3,Signal3,SSID4,MAC4,Channel4,Signal4,SSID5,MAC5,Channel5,Signal5,SSID6,MAC6,Channel6,Signal6,SSID7,MAC7,Channel7,Signal7,SSID8,MAC8,Channel8,Signal8,SSID9,MAC9,Channel9,Signal9,SSID10,MAC10,Channel10,Signal10");
@@ -145,7 +146,9 @@ public class CreateCsv {
 
 		}
 	}
-		
-		
-	
+
+	private static void WriterByMac(ArrayList<WiFiList> CsvFile) {
+
+	}
+
 }

@@ -15,7 +15,7 @@ public class algorithm2 {
 	final private int diff_no_sig=100;
 	
 	
-	//public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile,ArrayList<WiFiList> Csv_No_Gps )
+	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile,ArrayList<WiFiList> Csv_No_Gps )
 	{
 		
 		
