@@ -13,6 +13,8 @@ public class algorithm1 {
 
 	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile)
 	{
+		ArrayList<WiFiList> array=CsvFile;
+		
 		Router[] routers= new Router[10];
 		int counter=1;
 		int signal;
@@ -20,33 +22,33 @@ public class algorithm1 {
 		Point3D point;
 		Router router;
 
-		for (int i = 0; i < CsvFile.size(); i++) {
+		for (int i = 0; i < array.size(); i++) {
 
-			point=(CsvFile.get(i).getPoint());
-			mac=CsvFile.get(i).getArray().get(0).getMAC();
-			signal=CsvFile.get(i).getArray().get(0).getSignal();
+			point=(array.get(i).getPoint());
+			mac=array.get(i).getArray().get(0).getMAC();
+			signal=array.get(i).getArray().get(0).getSignal();
 			router=new Router (point,signal);
 			routers[counter-1]=router;
 
 
-			for(int k=i+1;k<CsvFile.size();k++)
+			for(int k=i+1;k<array.size();k++)
 			{
 
-				if(CsvFile.get(k).getArray().get(0).getMAC().equals(mac))
+				if(array.get(k).getArray().get(0).getMAC().equals(mac))
 				{
 					if(counter<10)
 					{
 						counter++;
-						point=(CsvFile.get(k).getPoint());
-						signal=CsvFile.get(k).getArray().get(0).getSignal();
+						point=(array.get(k).getPoint());
+						signal=array.get(k).getArray().get(0).getSignal();
 						router=new Router (point,signal);
 						routers[counter-1]=router;
-						CsvFile.remove(k);
+						array.remove(k);
 					}
 				}
 
 			}
-////
+
 			for(int l=0;l<counter-1;l++)
 			{
 				for(int m=l+1;m<counter;m++)
@@ -58,22 +60,22 @@ public class algorithm1 {
 			}
 			if(counter>1&&counter<4)
 			{
-				CsvFile.get(i).setPoint(routers[0].getPoint());
-				CsvFile.get(i).getArray().get(0).setSignal(routers[0].getSignal());
+				array.get(i).setPoint(routers[0].getPoint());
+				array.get(i).getArray().get(0).setSignal(routers[0].getSignal());
 			}
 
 			if(counter!=1&&counter>=4)
 			{
 				Router CenterRouter= WeightedCenterPoint(routers[0], routers[1], routers[2]);
-				CsvFile.get(i).setPoint(CenterRouter.getPoint());
-				CsvFile.get(i).getArray().get(0).setSignal(CenterRouter.getSignal());
+				array.get(i).setPoint(CenterRouter.getPoint());
+				array.get(i).getArray().get(0).setSignal(CenterRouter.getSignal());
 			}			
 
 
 			counter=1;			
 		}
 
-		return CsvFile;
+		return array;
 	}
 
 

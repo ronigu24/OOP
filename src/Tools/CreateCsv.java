@@ -45,6 +45,7 @@ public class CreateCsv {
 			e.printStackTrace();
 
 		}
+		System.out.println("Done");
 	}
 
 	/**
@@ -147,8 +148,6 @@ public class CreateCsv {
 		}
 	}
 
-	private static void WriterByMac(ArrayList<WiFiList> CsvFile) {
 
-	}
 
 }

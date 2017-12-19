@@ -33,7 +33,7 @@ public class Main {
 		System.out.println("What is your username of your computer?");
 		username=sc.next();
 
-		File folder = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile");
+		File folder = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM1");
 		ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(folder);
 		CreateCsv.WriterCsv(Wifilist, "InitCsv", folder);
 		
@@ -45,7 +45,8 @@ public class Main {
 		System.out.println("2.sort by Time");
 		System.out.println("3.Sort By Distance");
 		System.out.println("4.Weighted Center Point by Mac");
-		System.out.println("5.Without filter");
+		System.out.println("5.Find Gps to No_Gps Csv");
+		System.out.println("6.Without filter");
 
 		choice = sc.nextInt();
 
@@ -99,11 +100,16 @@ public class Main {
 
 		case 5: {
 
+			CreateCsv.WriterCsv(algorithm1.algorithm((Wifilist)), "CsvFindGps",folder);
 			CreateCsv.make10List(Wifilist,folder);
 
 		}
 			break;
+		case 6: {
 
+			CreateCsv.make10List(Wifilist,folder);
+
+		}
 		}
 		sc.close();
 
