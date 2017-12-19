@@ -104,9 +104,9 @@ public class Main {
 		}
 		sc.close();
 
-		String finalCsv = "C:\\Users\\RoniGu\\git\\OOP\\CSVFile\\BM1\\FinalCsv\\FinalCSV.csv";
+		String finalCsv = "C:\\Users\\RoniGu\\git\\OOP\\CSVFile\\FinalCsv\\FinalCSV.csv";
 		File file1 = new File(finalCsv);
-		CreateKml.csvtokml(file1);
+		//CreateKml.csvtokml(file1);
 
 		
 		
