@@ -1,8 +1,6 @@
 package algorithms;
 
-
 import java.util.ArrayList;
-
 import Objects.Point3D;
 import Objects.Router;
 import Objects.WiFiList;
@@ -83,7 +81,7 @@ public class algorithm1 {
 	}
 
 
-	public static void Swap (Router r1,Router r2)
+	private static void Swap (Router r1,Router r2)
 	{
 		Router temp=r1;
 		r1=r2;
@@ -92,7 +90,7 @@ public class algorithm1 {
 
 	}
 
-	public static Router WeightedCenterPoint(Router r1,Router r2,Router r3)
+	private static Router WeightedCenterPoint(Router r1,Router r2,Router r3)
 	{
 		double weightr1, weightr2, weightr3, wLat1, wLon1, wAlt1, wLat2, wLon2, wAlt2, wLat3, wLon3, wAlt3;
 		double sumLat,sumLon,sumAlt,sumWeight;
