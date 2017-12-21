@@ -17,8 +17,8 @@ public class algorithm2 {
 	final private static double power=2;
 	final private static double norm =10000;
 	final private static double sig_diff=0.4;
-	//final private int min_diff=3;
-	//final private int no_signal=-120;
+	final private int min_diff=3;
+	final private int no_signal=-120;
 	final private static double diff_no_sig=100;
 
 
