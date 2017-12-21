@@ -14,7 +14,7 @@ public class algorithm1 {
 	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile)
 	{
 		ArrayList<WiFiList> array=CsvFile;
-		
+
 		Router[] routers= new Router[10];
 		int counter=1;
 		int signal;
@@ -22,33 +22,37 @@ public class algorithm1 {
 		Point3D point;
 		Router router;
 
-		for (int i = 0; i < array.size(); i++) {
-
-			point=(array.get(i).getPoint());
-			mac=array.get(i).getArray().get(0).getMAC();
-			signal=array.get(i).getArray().get(0).getSignal();
-			router=new Router (point,signal);
-			routers[counter-1]=router;
-
-
-			for(int k=i+1;k<array.size();k++)
-			{
-
-				if(array.get(k).getArray().get(0).getMAC().equals(mac))
-				{
-					if(counter<10)
+		for (int i = 0; i < array.size()-1; i++) {
+			if(array.get(i)!=null&&array.get(i+1)!=null)
 					{
-						counter++;
-						point=(array.get(k).getPoint());
-						signal=array.get(k).getArray().get(0).getSignal();
-						router=new Router (point,signal);
-						routers[counter-1]=router;
+				point=(array.get(i).getPoint());
+				mac=array.get(i).getArray().get(0).getMAC();
+				signal=array.get(i).getArray().get(0).getSignal();
+				router=new Router (point,signal);
+				routers[counter-1]=router;
+
+
+				for(int k=i+1;k<array.size()-1;k++)
+				{
+					if(array.get(k)!=null)
+					{
+					if(array.get(k).getArray().get(0).getMAC().equals(mac))
+					{
+						if(counter<10)
+						{
+							counter++;
+							point=(array.get(k).getPoint());
+							signal=array.get(k).getArray().get(0).getSignal();
+							router=new Router (point,signal);
+							routers[counter-1]=router;
+							array.remove(k);
+						}
 						array.remove(k);
 					}
+					}
+
 				}
-
-			}
-
+					}
 			for(int l=0;l<counter-1;l++)
 			{
 				for(int m=l+1;m<counter;m++)
@@ -117,5 +121,6 @@ public class algorithm1 {
 
 		return CenterRouter;
 	}
+
 
 }

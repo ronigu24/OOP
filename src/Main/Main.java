@@ -33,7 +33,7 @@ public class Main {
 		System.out.println("What is your username of your computer?");
 		username=sc.next();
 
-		File folder = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM1");
+		File folder = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM2");
 		ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(folder);
 		CreateCsv.WriterCsv(Wifilist, "InitCsv", folder);
 		
@@ -99,10 +99,11 @@ public class Main {
 			break;
 
 		case 5: {
-
-			CreateCsv.WriterCsv(algorithm1.algorithm((Wifilist)), "CsvFindGps",folder);
-			CreateCsv.make10List(Wifilist,folder);
-
+			Wifilist=CreateCsv.make10List(Wifilist,folder);
+			File folder_No_Gps = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM2\\No_Gps");
+			ArrayList<WiFiList> No_Gps = readcsv.readcsv_NoGps(folder_No_Gps);
+			ArrayList<WiFiList> Found_Gps=algorithms.algorithm2.algorithm(Wifilist, No_Gps);
+			CreateCsv.WritertoFinalCsv(Found_Gps, folder_No_Gps);
 		}
 			break;
 		case 6: {

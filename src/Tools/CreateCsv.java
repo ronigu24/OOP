@@ -56,7 +56,7 @@ public class CreateCsv {
 	 * 
 	 */
 
-	public static void make10List(ArrayList<WiFiList> One_Csv_File,File folder) {
+	public static ArrayList<WiFiList> make10List(ArrayList<WiFiList> One_Csv_File,File folder) {
 		ArrayList<WiFiList> result = new ArrayList<WiFiList>();
 		WiFiList.resetID();
 		WiFiList wifilist = null;
@@ -90,9 +90,11 @@ public class CreateCsv {
 			}
 			wifilist.add(newwifi);
 		}
+		
 		Collections.sort(result);
+		
 		WritertoFinalCsv(result,folder);
-
+		return result;
 	}
 
 	/**
@@ -124,7 +126,7 @@ public class CreateCsv {
 	 *            same date and cordinations.
 	 */
 
-	private static void WritertoFinalCsv(ArrayList<WiFiList> CsvFile,File folder) {
+	public static void WritertoFinalCsv(ArrayList<WiFiList> CsvFile,File folder) {
 		StringBuilder builder = new StringBuilder();
 		PrintWriter pw = null;
 		try {

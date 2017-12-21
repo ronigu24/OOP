@@ -107,7 +107,7 @@ public class readcsv {
 		double lat, lon, alt;
 		String ssid, mac;
 		int signal,channel;
-		int place=6;
+		int place=0;
 		try {
 			String[] Line;
 
@@ -117,37 +117,40 @@ public class readcsv {
 					BufferedReader br = new BufferedReader(fr);
 
 					Str = br.readLine();
-					Str = br.readLine();
-					Str = br.readLine();
 
 					while (Str != null) {
 
 						Line = Str.split(",");
-						lat = Double.parseDouble(Line[1]);
-						lon = Double.parseDouble(Line[2]);
-						alt = Double.parseDouble(Line[3]);
+						lat =0;
+						lon =0;
+						alt =0;
 
 						Point3D point=new Point3D(lat,lon,alt);
-
+						String date=Line[0].substring(0,14);
 						if (Line[0].contains("/")) {
-							TimeDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(Line[0]);
+							
+							TimeDate = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(date);
 
 						} else {
-							TimeDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(Line[0]);
+							TimeDate = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(date);
 						}
 						WiFiList wifilist = new WiFiList(TimeDate, point);
 
-						while(place+1<Line.length)
+						while(place+6<Line.length)
 						{
-							mac=Line[place];
-							ssid=Line[place+1];
-							channel=Integer.parseInt(Line[place+2]);
-							signal =Integer.parseInt(Line[place+3]);
+							
+							ssid=Line[place+6];
+							mac=Line[place+7];
+							channel=Integer.parseInt(Line[place+8]);
+							signal =Integer.parseInt(Line[place+9]);
 
 							WiFi wifi = new WiFi(ssid,mac,channel,signal,TimeDate);
 
 							wifilist.add(wifi);
+							 place=place+4;
+							 //System.out.println(wifilist.getArray().size());
 						}
+						place=0;
 						AllWifi.add(wifilist);
 						Collections.sort(AllWifi);
 						Str = br.readLine();
