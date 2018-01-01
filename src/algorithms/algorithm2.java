@@ -2,14 +2,9 @@ package algorithms;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
-import javax.xml.soap.Node;
-
 import Objects.Point3D;
 import Objects.WiFiList;
-import Tools.CreateCsv;
+
 
 public class algorithm2 {
 
@@ -17,11 +12,14 @@ public class algorithm2 {
 	final private static double power=2;
 	final private static double norm =10000;
 	final private static double sig_diff=0.4;
-	final private int min_diff=3;
-	final private int no_signal=-120;
 	final private static double diff_no_sig=100;
 
-
+/**
+ * @param Get two ArrayList<WiFiList> first with GPS location second without GPS location
+ * @param CsvFile
+ * @param Csv_No_Gps
+ * @return
+ */
 	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile,ArrayList<WiFiList> Csv_No_Gps )
 	{
 
@@ -121,8 +119,11 @@ public class algorithm2 {
 
 	}
 
-
-	public static void sort(ArrayList<Point2D> Pi)
+/**
+ * 
+ * @param Get ArrayList<Point2D>
+ */
+	private static void sort(ArrayList<Point2D> Pi)
 	{
 
 		for(int i=0;i<Pi.size()-1;i++)
@@ -136,7 +137,12 @@ public class algorithm2 {
 			}
 		}
 	}
-	public static void swap(Point2D p1,Point2D p2)
+	/**
+	 * @param Get two points
+	 * @param p1
+	 * @param p2
+	 */
+	private static void swap(Point2D p1,Point2D p2)
 	{
 		Point2D temp=new Point2D.Double(0, 0);
 		temp=p1;

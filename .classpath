@@ -2,10 +2,15 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/JavaAPIforKml-2.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/jaxb-api-2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/jaxb-impl-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/JavaAPIforKml-2.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/jaxb-api-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/jaxb-impl-2.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/jcoord-1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/junit-4.12-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/RoniGu/git/OOP1/Jar&apos;s Files/junit-4.12-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Omri Baruch/git/OOP/OOP/Jar&apos;s Files/JavaAPIforKml-2.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Omri Baruch/git/OOP/OOP/Jar&apos;s Files/jaxb-api-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Omri Baruch/git/OOP/OOP/Jar&apos;s Files/jaxb-impl-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Omri Baruch/git/OOP/OOP/Jar&apos;s Files/jcoord-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Omri Baruch/git/OOP/OOP/Jar&apos;s Files/junit-4.12-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
