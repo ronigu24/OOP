@@ -13,7 +13,7 @@ public class algorithm1 {
 
 	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile)
 	{
-		ArrayList<WiFiList> array=CsvFile;
+		ArrayList<WiFiList> arr=CsvFile;
 
 		Router[] routers= new Router[10];
 		int counter=1;
@@ -22,37 +22,35 @@ public class algorithm1 {
 		Point3D point;
 		Router router;
 
-		for (int i = 0; i < array.size()-1; i++) {
-			if(array.get(i)!=null&&array.get(i+1)!=null)
-					{
-				point=(array.get(i).getPoint());
-				mac=array.get(i).getArray().get(0).getMAC();
-				signal=array.get(i).getArray().get(0).getSignal();
+		for (int i = 0; arr.get(i)!=null&&i<arr.size()-2; i++) {
+			
+				point=(arr.get(i).getPoint());
+				mac=arr.get(i).getArray().get(0).getMAC();
+				signal=arr.get(i).getArray().get(0).getSignal();
 				router=new Router (point,signal);
 				routers[counter-1]=router;
 
 
-				for(int k=i+1;k<array.size()-1;k++)
+				for(int k=i+1;arr.get(k)!=null&&k<arr.size()-1;k++)
 				{
-					if(array.get(k)!=null)
-					{
-					if(array.get(k).getArray().get(0).getMAC().equals(mac))
+					
+					if(arr.get(k).getArray().get(0).getMAC().equals(mac))
 					{
 						if(counter<10)
 						{
 							counter++;
-							point=(array.get(k).getPoint());
-							signal=array.get(k).getArray().get(0).getSignal();
+							point=(arr.get(k).getPoint());
+							signal=arr.get(k).getArray().get(0).getSignal();
 							router=new Router (point,signal);
 							routers[counter-1]=router;
-							array.remove(k);
+							arr.remove(k);
 						}
-						array.remove(k);
+						arr.remove(k);
 					}
-					}
+					
 
 				}
-					}
+					
 			for(int l=0;l<counter-1;l++)
 			{
 				for(int m=l+1;m<counter;m++)
@@ -64,22 +62,22 @@ public class algorithm1 {
 			}
 			if(counter>1&&counter<4)
 			{
-				array.get(i).setPoint(routers[0].getPoint());
-				array.get(i).getArray().get(0).setSignal(routers[0].getSignal());
+				arr.get(i).setPoint(routers[0].getPoint());
+				arr.get(i).getArray().get(0).setSignal(routers[0].getSignal());
 			}
 
 			if(counter!=1&&counter>=4)
 			{
 				Router CenterRouter= WeightedCenterPoint(routers[0], routers[1], routers[2]);
-				array.get(i).setPoint(CenterRouter.getPoint());
-				array.get(i).getArray().get(0).setSignal(CenterRouter.getSignal());
+				arr.get(i).setPoint(CenterRouter.getPoint());
+				arr.get(i).getArray().get(0).setSignal(CenterRouter.getSignal());
 			}			
 
 
 			counter=1;			
 		}
 
-		return array;
+		return arr;
 	}
 
 
