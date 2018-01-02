@@ -13,7 +13,7 @@ public class algorithm1 {
 	{
 		ArrayList<WiFiList> arr=CsvFile;
 		ArrayList<WiFiList> algo1=new ArrayList<WiFiList>();
-int place=0;
+		int place=0;
 		Router[] routers= new Router[10];
 		int counter=1;
 		int signal;
@@ -81,7 +81,7 @@ int place=0;
 					algo1.get(place).getArray().get(0).setSignal(CenterRouter.getSignal());
 				}			
 
-place++;
+				place++;
 				counter=1;			
 			}
 		}
