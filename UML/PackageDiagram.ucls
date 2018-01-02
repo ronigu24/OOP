@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="Filters" project="OOP" file="/OOP/src/Filters" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="141" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="Main" project="OOP" file="/OOP/src/Main" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="327" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="Objects" project="OOP" file="/OOP/src/Objects" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="513" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="Tools" project="OOP" file="/OOP/src/Tools" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="699" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="test" project="OOP" file="/OOP/src/test" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="885" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="GUI" project="OOP" file="/OOP/src/GUI" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1071" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="algorithms" project="OOP" file="/OOP/src/algorithms" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1257" y="160"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
