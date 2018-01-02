@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Objects.Point3D;
 import Objects.WiFiList;
 import Tools.readcsv;
 
@@ -18,7 +19,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Window extends JFrame {
 
@@ -27,7 +30,17 @@ public class Window extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	
+	
 	public static void main(String[] args) {
+		String SSID,username,FileName;
+		String start, end;
+		double lat, lon, distance;
+		Point3D place = null;
+		 ArrayList<WiFiList> Wifilist = new ArrayList<WiFiList>();
+			File folder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile\\BM2");
+
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -60,7 +73,7 @@ public class Window extends JFrame {
 		lblInputoutput.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblInputoutput.setBounds(102, 83, 135, 32);
 		contentPane.add(lblInputoutput);
-		ArrayList<WiFiList> Wifilist = new ArrayList<WiFiList>();
+		
 
 		
 		JButton btnInputDocument = new JButton("Input Document");

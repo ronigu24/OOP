@@ -19,7 +19,7 @@ import algorithms.algorithm1;
 
 
 public class Main {
-
+	
 
 	public static void main(String[] args) throws ParseException, IOException {
 		// TODO Auto-generated method stub
@@ -36,7 +36,7 @@ public class Main {
 		File folder = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM2");
 		ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(folder);
 		CreateCsv.WriterCsv(Wifilist, "InitCsv", folder);
-
+		
 
 		Filter filter = null;
 
@@ -60,7 +60,7 @@ public class Main {
 			CreateCsv.WriteByFilter(Wifilist, filter,FileName, folder);
 			CreateCsv.make10List(Wifilist,folder);
 		}
-		break;
+			break;
 		case 2: {
 			System.out.println("Enter start time (dd/MM/yyyy hh:mm) ");
 			start = sc.nextLine();
@@ -72,7 +72,7 @@ public class Main {
 			CreateCsv.WriteByFilter(Wifilist, filter, FileName,folder);
 			CreateCsv.make10List(Wifilist,folder);
 		}
-		break;
+			break;
 		case 3: {
 			System.out.println("Enter your lat coordinate");
 			lat = sc.nextDouble();
@@ -92,10 +92,11 @@ public class Main {
 		}
 
 		case 4: {
-			ArrayList<WiFiList> united = readcsv.readcsv_United(folder+"\\comb\\_comb_all_.csv");
-			CreateCsv.WriterCsv((algorithm1.algorithm(united)),"algo1",folder);
+
+			CreateCsv.WriterCsv(algorithm1.algorithm((Wifilist)), "CsvByMac",folder);
+			CreateCsv.make10List(Wifilist,folder);
 		}
-		break;
+			break;
 
 		case 5: {
 			Wifilist=CreateCsv.make10List(Wifilist,folder);
@@ -104,7 +105,7 @@ public class Main {
 			ArrayList<WiFiList> Found_Gps=algorithms.algorithm2.algorithm(Wifilist, No_Gps);
 			CreateCsv.WritertoFinalCsv(Found_Gps, folder_No_Gps);
 		}
-		break;
+			break;
 		case 6: {
 
 			CreateCsv.make10List(Wifilist,folder);

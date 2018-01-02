@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Algorithm extends JFrame {
 
@@ -55,6 +57,13 @@ public class Algorithm extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnOk = new JButton("Ok");
+		btnOk.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				
+			}
+		});
 		btnOk.setBounds(117, 129, 115, 29);
 		contentPane.add(btnOk);
 		
