@@ -5,10 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Main.Main;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
 
 public class InputFile extends JFrame {
 
@@ -53,6 +59,15 @@ public class InputFile extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnOk = new JButton("Ok");
+		btnOk.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				File file=new File(textField.getText());
+				Main.setFolder(file);
+
+			}
+		});
 		btnOk.setBounds(113, 129, 115, 29);
 		contentPane.add(btnOk);
 		

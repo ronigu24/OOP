@@ -5,11 +5,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Filters.Filter;
+import Main.Main;
+import Tools.CreateCsv;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
 
 public class TimeFilter extends JFrame {
 
@@ -55,6 +63,18 @@ public class TimeFilter extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnOk = new JButton("Ok");
+		btnOk.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				String start=textField.getText();
+				String end=textField_1.getText();
+
+				Filter filter = new Filter("Date", start + ";" + end);
+				String FileName = "TimeCSV";
+				Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter, FileName,Main.getFolder()));
+			}
+		});
 		btnOk.setBounds(115, 129, 115, 29);
 		contentPane.add(btnOk);
 		

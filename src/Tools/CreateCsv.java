@@ -104,7 +104,7 @@ public class CreateCsv {
 	 *            the Csv file.
 	 */
 
-	public static void WriteByFilter(ArrayList<WiFiList> One_Csv_File, Filter filter, String FileName,File folder) {
+	public static ArrayList<WiFiList> WriteByFilter(ArrayList<WiFiList> One_Csv_File, Filter filter, String FileName,File folder) {
 
 		for (int i = 0; i < One_Csv_File.size(); i++) {
 			if (false == filter.isFit(One_Csv_File.get(i)) && One_Csv_File.get(i) != null) {
@@ -115,7 +115,8 @@ public class CreateCsv {
 			}
 
 		}
-		CreateCsv.WriterCsv(One_Csv_File, FileName,folder);
+		return One_Csv_File;
+		//CreateCsv.WriterCsv(One_Csv_File, FileName,folder);
 
 	}
 

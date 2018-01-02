@@ -64,7 +64,8 @@ public class SSIDFilter extends JFrame {
 				String SSID=textField_1.getText();
 				Filter filter = new Filter("SSID", SSID);
 				String FileName = "SSID";
-				CreateCsv.WriteByFilter(Main.Wifilist, filter,FileName, Main.folder);
+				Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter,FileName, Main.getFolder()));
+
 			}
 		});
 		btnOk.setBounds(104, 129, 115, 29);

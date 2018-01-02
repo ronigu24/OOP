@@ -7,8 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Main.Main;
 import Objects.Point3D;
 import Objects.WiFiList;
+import Tools.CreateCsv;
 import Tools.readcsv;
 
 import javax.swing.JLabel;
@@ -108,6 +110,9 @@ public class Window extends JFrame {
 		btnReset.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				 ArrayList<WiFiList> NewArray=new ArrayList<WiFiList>();
+				 Main.Main.setWifilist(NewArray);
 			}
 		});
 		btnReset.addActionListener(new ActionListener() {
@@ -207,6 +212,8 @@ public class Window extends JFrame {
 		btnSave_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				CreateCsv.WriterCsv(Main.getWifilist(), "byfilter", Main.getFolder());
 			}
 		});
 		btnSave_1.setBounds(305, 337, 152, 29);

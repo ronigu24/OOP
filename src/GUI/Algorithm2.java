@@ -23,6 +23,7 @@ public class Algorithm2 extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -117,5 +118,10 @@ public class Algorithm2 extends JFrame {
 		textField_6.setColumns(10);
 		textField_6.setBounds(174, 318, 131, 26);
 		contentPane.add(textField_6);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(181, 87, 131, 26);
+		contentPane.add(textField_7);
 	}
 }

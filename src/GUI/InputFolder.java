@@ -65,16 +65,13 @@ public class InputFolder extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String folder= textField.getText();
-				File FoldFile=new File (folder);
-				try {
-					ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(FoldFile);
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				
+				File folder=new File (textField.getText());
+				Main.Main.setFolder(folder);
+				
 				}
 
-			}
+			
 		});
 		btnOk.setBounds(113, 129, 115, 29);
 		contentPane.add(btnOk);
