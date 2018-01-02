@@ -19,8 +19,43 @@ import algorithms.algorithm1;
 
 
 public class Main {
-public static  ArrayList<WiFiList> Wifilist=new ArrayList<WiFiList>();
+	public static  ArrayList<WiFiList> Wifilist=new ArrayList<WiFiList>();
+
+ 
+
+public static File getFolder() {
+		return folder;
+	}
+
+
+
+
+
+	public static void setFolder(File folder) {
+		Main.folder = folder;
+	}
+
+
+
+
+
 public static 	File folder = new File("C:\\Users\\"+"Ronigu"+"\\Desktop\\CSVFile\\BM2");
+
+
+
+
+
+	public static ArrayList<WiFiList> getWifilist() {
+	return Wifilist;
+}
+
+
+
+
+
+public static void setWifilist(ArrayList<WiFiList> wifilist) {
+	Wifilist = wifilist;
+}
 
 
 
