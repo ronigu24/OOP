@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Filters.Filter;
+import Main.Main;
+import Objects.WiFiList;
 import Tools.CreateCsv;
 
 import javax.swing.JLabel;
@@ -16,6 +18,7 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.ArrayList;
 
 public class SSIDFilter extends JFrame {
 
@@ -61,8 +64,7 @@ public class SSIDFilter extends JFrame {
 				String SSID=textField_1.getText();
 				Filter filter = new Filter("SSID", SSID);
 				String FileName = "SSID";
-				File folder = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM2");
-				CreateCsv.WriteByFilter(Wifilist, filter,FileName, folder);
+				CreateCsv.WriteByFilter(Main.Wifilist, filter,FileName, Main.folder);
 			}
 		});
 		btnOk.setBounds(104, 129, 115, 29);

@@ -33,13 +33,7 @@ public class Window extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		String SSID,username,FileName;
-		String start, end;
-		double lat, lon, distance;
-		Point3D place = null;
-		 ArrayList<WiFiList> Wifilist = new ArrayList<WiFiList>();
-			File folder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile\\BM2");
-
+		
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
