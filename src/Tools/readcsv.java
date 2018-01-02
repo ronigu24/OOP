@@ -168,6 +168,73 @@ public class readcsv {
 		}
 		return AllWifi;
 	}
+	
+	
+	public static ArrayList<WiFiList> readcsv_United(String CsvFile) throws ParseException {
+		ArrayList<WiFiList> AllWifi = new ArrayList<WiFiList>();
+		String Str;
+		
+		Date TimeDate = null;
+		double lat, lon, alt;
+		String ssid, mac;
+		int signal,channel;
+		int place=0;
+		try {
+			String[] Line;
+
+					FileReader fr = new FileReader(CsvFile);
+					BufferedReader br = new BufferedReader(fr);
+
+					Str = br.readLine();
+
+					while (Str != null) {
+
+						Line = Str.split(",");
+						lat =Double.parseDouble(Line[2]);
+						lon =Double.parseDouble(Line[3]);
+						alt =Double.parseDouble(Line[4]);
+
+						Point3D point=new Point3D(lat,lon,alt);
+						String date=Line[0].substring(0,14);
+						if (Line[0].contains("/")) {
+							
+							TimeDate = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(date);
+
+						} else {
+							TimeDate = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(date);
+						}
+						WiFiList wifilist = new WiFiList(TimeDate, point);
+
+						while(place+6<Line.length)
+						{
+							
+							ssid=Line[place+6];
+							mac=Line[place+7];
+							channel=Integer.parseInt(Line[place+8]);
+							signal =Integer.parseInt(Line[place+9]);
+
+							WiFi wifi = new WiFi(ssid,mac,channel,signal,TimeDate);
+
+							wifilist.add(wifi);
+							 place=place+4;
+						}
+						place=0;
+						AllWifi.add(wifilist);
+						Collections.sort(AllWifi);
+						Str = br.readLine();
+					}
+
+
+					br.close();
+					fr.close();
+					Collections.sort(AllWifi);
+			
+		} catch (IOException ex) {
+			System.out.print("Error reading file\n" + ex);
+
+		}
+		return AllWifi;
+	}
 
 }
 
