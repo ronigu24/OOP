@@ -19,7 +19,12 @@ import algorithms.algorithm1;
 
 
 public class Main {
-	
+public static  ArrayList<WiFiList> Wifilist=new ArrayList<WiFiList>();
+public static 	File folder = new File("C:\\Users\\"+"Ronigu"+"\\Desktop\\CSVFile\\BM2");
+
+
+
+
 
 	public static void main(String[] args) throws ParseException, IOException {
 		// TODO Auto-generated method stub
@@ -33,7 +38,6 @@ public class Main {
 		System.out.println("What is your username of your computer?");
 		username=sc.next();
 
-		File folder = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM2");
 		ArrayList<WiFiList> Wifilist = readcsv.readcsvFolder(folder);
 		CreateCsv.WriterCsv(Wifilist, "InitCsv", folder);
 		
