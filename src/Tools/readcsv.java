@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+import Main.Main;
 import Objects.Point3D;
 import Objects.WiFi;
 import Objects.WiFiList;
@@ -32,7 +33,6 @@ import Objects.WiFiList;
 public class readcsv {
 
 	public static ArrayList<WiFiList> readcsvFolder(File Folder) throws ParseException {
-		ArrayList<WiFiList> AllWifi = new ArrayList<WiFiList>();
 		String Str;
 		String FileName = Folder.toString();
 		String[] names = Folder.list();
@@ -40,10 +40,8 @@ public class readcsv {
 		double lat, lon, alt;
 		String ssid, mac;
 		int signal,channel;
-
 		try {
 			String[] Line;
-
 			for (int i = 0; i < names.length; i++) {
 				if (names[i].contains(".csv")) {
 					FileReader fr = new FileReader(FileName + "\\" + names[i]);
@@ -78,21 +76,21 @@ public class readcsv {
 
 						Str = br.readLine();
 						wifilist.add(wifi);
-						AllWifi.add(wifilist);
-						Collections.sort(AllWifi);
+						Main.Wifilist.add(wifilist);
+						Collections.sort(Main.Wifilist);
 					}
 
 
 					br.close();
 					fr.close();
-					Collections.sort(AllWifi);
+					Collections.sort(Main.Wifilist);
 				}
 			}
 		} catch (IOException ex) {
 			System.out.print("Error reading file\n" + ex);
 
 		}
-		return AllWifi;
+		return Main.Wifilist;
 	}
 
 
@@ -171,7 +169,6 @@ public class readcsv {
 	
 	
 	public static ArrayList<WiFiList> readcsv_United(String CsvFile) throws ParseException {
-		ArrayList<WiFiList> AllWifi = new ArrayList<WiFiList>();
 		String Str;
 		
 		Date TimeDate = null;
@@ -184,6 +181,7 @@ public class readcsv {
 
 					FileReader fr = new FileReader(CsvFile);
 					BufferedReader br = new BufferedReader(fr);
+					
 
 					Str = br.readLine();
 
@@ -219,21 +217,21 @@ public class readcsv {
 							 place=place+4;
 						}
 						place=0;
-						AllWifi.add(wifilist);
-						Collections.sort(AllWifi);
+						Main.Wifilist.add(wifilist);
+						Collections.sort(Main.Wifilist);
 						Str = br.readLine();
 					}
 
 
 					br.close();
 					fr.close();
-					Collections.sort(AllWifi);
+					Collections.sort(Main.Wifilist);
 			
 		} catch (IOException ex) {
 			System.out.print("Error reading file\n" + ex);
 
 		}
-		return AllWifi;
+		return Main.Wifilist;
 	}
 
 }

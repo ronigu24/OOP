@@ -35,6 +35,7 @@ public class LocationFilter extends JFrame {
 				try {
 					LocationFilter frame = new LocationFilter();
 					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,17 +63,19 @@ public class LocationFilter extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(!textField.getText().isEmpty()&&!textField_1.getText().isEmpty()&&!textField_3.getText().isEmpty())
+				{
+					double lat=Double.parseDouble(textField.getText());
+					double lon=Double.parseDouble(textField_1.getText());
+					double alt=Double.parseDouble(textField_2.getText());
+					double distance=Double.parseDouble(textField_3.getText());
 
-				double lat=Double.parseDouble(textField.getText());
-				double lon=Double.parseDouble(textField_1.getText());
-				double alt=Double.parseDouble(textField_2.getText());
-				double distance=Double.parseDouble(textField_3.getText());
-
-				Point3D place = new Point3D(lat, lon, 0);
-				Filter filter = new Filter("Distance", place, distance);
-				String FileName = "DistanceCSV";
-				Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter,FileName, Main.getFolder()));
-				
+					Point3D place = new Point3D(lat, lon, 0);
+					Filter filter = new Filter("Distance", place, distance);
+					String FileName = "DistanceCSV";
+					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter,FileName, Main.getFolder()));
+					dispose();
+				}
 			}
 		});
 		btnOk.setBounds(107, 250, 115, 29);

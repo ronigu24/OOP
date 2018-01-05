@@ -20,8 +20,8 @@ import java.awt.event.MouseEvent;
 public class TimeFilter extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField minimum;
+	private JTextField maximum;
 
 	/**
 	 * Launch the application.
@@ -49,43 +49,46 @@ public class TimeFilter extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAlgorithm = new JLabel("Time Filter");
 		lblAlgorithm.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblAlgorithm.setBounds(115, 3, 117, 31);
 		contentPane.add(lblAlgorithm);
-		
-		textField = new JTextField();
-		textField.setBounds(115, 50, 203, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
+
+		minimum = new JTextField();
+		minimum.setBounds(115, 50, 203, 26);
+		contentPane.add(minimum);
+		minimum.setColumns(10);
+
 		JButton btnOk = new JButton("Ok");
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				String start=textField.getText();
-				String end=textField_1.getText();
+				if(!minimum.getText().isEmpty()&&!maximum.getText().isEmpty())
+				{
+					String start=minimum.getText();
+					String end=maximum.getText();
+					dispose();
 
-				Filter filter = new Filter("Date", start + ";" + end);
-				String FileName = "TimeCSV";
-				Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter, FileName,Main.getFolder()));
+					Filter filter = new Filter("Date", start + ";" + end);
+					String FileName = "TimeCSV";
+					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter, FileName,Main.getFolder()));
+				}
 			}
 		});
 		btnOk.setBounds(115, 129, 115, 29);
 		contentPane.add(btnOk);
-		
+
 		JLabel lblEnterMac = new JLabel("Min Time:");
 		lblEnterMac.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblEnterMac.setBounds(15, 52, 95, 20);
 		contentPane.add(lblEnterMac);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(115, 92, 203, 26);
-		contentPane.add(textField_1);
-		
+
+		maximum = new JTextField();
+		maximum.setColumns(10);
+		maximum.setBounds(115, 92, 203, 26);
+		contentPane.add(maximum);
+
 		JLabel lblMaxTime = new JLabel("Max Time:");
 		lblMaxTime.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblMaxTime.setBounds(15, 95, 95, 20);

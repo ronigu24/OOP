@@ -5,10 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Main.Main;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Info extends JFrame {
 
@@ -46,10 +51,6 @@ public class Info extends JFrame {
 		lblAlgorithm.setBounds(145, 0, 117, 31);
 		contentPane.add(lblAlgorithm);
 		
-		JButton btnOk = new JButton("Ok");
-		btnOk.setBounds(112, 212, 115, 29);
-		contentPane.add(btnOk);
-		
 		JLabel lblEnterMac = new JLabel("Quantity of records:");
 		lblEnterMac.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblEnterMac.setBounds(15, 50, 164, 20);
@@ -65,19 +66,31 @@ public class Info extends JFrame {
 		lblFilterProperties.setBounds(15, 127, 164, 20);
 		contentPane.add(lblFilterProperties);
 		
-		JEditorPane dtrpnD = new JEditorPane();
-		dtrpnD.setEditable(false);
-		dtrpnD.setBounds(185, 126, 106, 26);
-		contentPane.add(dtrpnD);
+		JEditorPane filter_pro = new JEditorPane();
+		filter_pro.setEditable(false);
+		filter_pro.setBounds(185, 126, 106, 26);
+		contentPane.add(filter_pro);
 		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setEditable(false);
-		editorPane.setBounds(185, 47, 106, 26);
-		contentPane.add(editorPane);
+		JEditorPane records = new JEditorPane();
+		records.setEditable(false);
+		records.setBounds(185, 47, 106, 26);
+		contentPane.add(records);
 		
-		JEditorPane editorPane_1 = new JEditorPane();
-		editorPane_1.setEditable(false);
-		editorPane_1.setBounds(185, 86, 106, 26);
-		contentPane.add(editorPane_1);
+		JEditorPane routers = new JEditorPane();
+		routers.setEditable(false);
+		routers.setBounds(185, 86, 106, 26);
+		contentPane.add(routers);
+		
+		JButton btnOk = new JButton("Ok");
+		btnOk.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				records.setText(Integer.toString(Main.Wifilist.size()));
+				
+			}
+		});
+		btnOk.setBounds(112, 212, 115, 29);
+		contentPane.add(btnOk);
 	}
 }

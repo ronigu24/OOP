@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import Main.Main;
 import Objects.WiFiList;
 import Tools.CreateCsv;
+import Tools.CreateKml;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,7 +18,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import javax.swing.JInternalFrame;
 
 public class Window extends JFrame {
 
@@ -66,7 +71,7 @@ public class Window extends JFrame {
 		
 
 		
-		JButton btnInputDocument = new JButton("Input Document");
+		JButton btnInputDocument = new JButton("Input Folder");
 		btnInputDocument.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -120,6 +125,8 @@ public class Window extends JFrame {
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				CreateCsv.make10List(Main.getWifilist(), Main.getFolder());
 			}
 		});
 		btnSave.addActionListener(new ActionListener() {
@@ -133,6 +140,16 @@ public class Window extends JFrame {
 		btnSaveToKml.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				File path=new File("C:\\Users\\RoniGu\\git\\OOPnew\\CSVFile\\FinalCsv\\FinalCSV.csv");
+				try {
+					CreateKml.csvtokml(path);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnSaveToKml.setBounds(85, 337, 152, 29);
@@ -142,6 +159,10 @@ public class Window extends JFrame {
 		btnInfo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				Info frame = new Info();
+				frame.setVisible(true);
+				
 			}
 		});
 		btnInfo.setBounds(85, 382, 152, 29);

@@ -59,11 +59,14 @@ public class SSIDFilter extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String SSID=textField_1.getText();
-				Filter filter = new Filter("SSID", SSID);
-				String FileName = "SSID";
-				Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter,FileName, Main.getFolder()));
-
+				if(!textField_1.getText().isEmpty())
+				{
+					String SSID=textField_1.getText();
+					Filter filter = new Filter("SSID", SSID);
+					String FileName = "SSID";
+					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter,FileName, Main.getFolder()));
+					dispose();
+				}
 			}
 		});
 		btnOk.setBounds(104, 129, 115, 29);
