@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Objects.WiFiList;
-import Tools.readcsv;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -16,8 +14,6 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.text.ParseException;
-import java.util.ArrayList;
 
 public class InputFolder extends JFrame {
 

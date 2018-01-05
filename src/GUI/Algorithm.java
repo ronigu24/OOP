@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,15 +11,12 @@ import algorithms.algorithm1;
 
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.TextArea;
 
-import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import javax.swing.JEditorPane;
 import javax.swing.JTextArea;
 
 public class Algorithm extends JFrame {

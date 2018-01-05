@@ -8,9 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import javax.swing.JEditorPane;
-import javax.swing.JTextArea;
 
 public class Info extends JFrame {
 

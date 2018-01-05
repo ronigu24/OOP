@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,22 +7,17 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Main.Main;
-import Objects.Point3D;
 import Objects.WiFiList;
 import Tools.CreateCsv;
-import Tools.readcsv;
 
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Window extends JFrame {
 
@@ -112,7 +106,7 @@ public class Window extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				 ArrayList<WiFiList> NewArray=new ArrayList<WiFiList>();
-				 Main.Main.setWifilist(NewArray);
+				 Main.setWifilist(NewArray);
 			}
 		});
 		btnReset.addActionListener(new ActionListener() {

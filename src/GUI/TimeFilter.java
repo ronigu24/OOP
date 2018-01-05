@@ -14,10 +14,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 
 public class TimeFilter extends JFrame {
 
