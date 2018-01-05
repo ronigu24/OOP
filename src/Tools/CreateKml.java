@@ -54,6 +54,8 @@ public class CreateKml {
 
 		String str = br.readLine();
 		str = br.readLine();
+		str = br.readLine();
+
 		TimeStamp timestamp = new TimeStamp();
 		double lat, lon;
 		String signal;
@@ -83,7 +85,7 @@ public class CreateKml {
 			str = br.readLine();
 
 		}
-		String KmlFile = "C:\\Users\\Omri Baruch\\Desktop\\CSVFile\\KMLFile\\kmlFile";
+		String KmlFile = "C:\\Users\\username\\Desktop\\CSVFile\\KMLFile\\kmlFile";
 		try {
 			kml.marshal(new File(KmlFile));
 			System.out.println("kml create");
@@ -91,6 +93,7 @@ public class CreateKml {
 		} catch (Exception e) {
 
 		}
+		System.out.println("kml created");
 
 	}
 
