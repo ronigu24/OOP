@@ -71,9 +71,9 @@ public class LocationFilter extends JFrame {
 					double distance=Double.parseDouble(textField_3.getText());
 
 					Point3D place = new Point3D(lat, lon, 0);
-					Filter filter = new Filter("Distance", place, distance);
+					Main.filter = new Filter("Distance", place, distance);
 					String FileName = "DistanceCSV";
-					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter,FileName, Main.getFolder()));
+					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), Main.filter,FileName, Main.getFolder()));
 					dispose();
 				}
 			}

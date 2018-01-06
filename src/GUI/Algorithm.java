@@ -82,7 +82,7 @@ public class Algorithm extends JFrame {
 				 ArrayList<WiFiList> Algo1=algorithm1.algorithm(Main.Main.getWifilist());
 				for(int i=0;i<Algo1.size();i++)
 				{
-					if(Algo1.get(i).getArray().get(0).getMAC()==textField.getText())
+					if(Algo1.get(i).getArray().get(0).getMAC().equals(textField.getText()))
 					{
 						double lat=Algo1.get(i).getPoint().getLat();
 						double lon=Algo1.get(i).getPoint().getLon();
@@ -90,7 +90,7 @@ public class Algorithm extends JFrame {
 
 						textArea.append("Lat: "+lat+"\n Lon:  "+lon+"\n Alt: "+alt);
 					}
-				
+
 				}
 			}
 		});

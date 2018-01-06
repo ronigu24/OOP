@@ -70,9 +70,9 @@ public class TimeFilter extends JFrame {
 					String end=maximum.getText();
 					dispose();
 
-					Filter filter = new Filter("Date", start + ";" + end);
+					 Main.filter = new Filter("Date", start + ";" + end);
 					String FileName = "TimeCSV";
-					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), filter, FileName,Main.getFolder()));
+					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), Main.filter, FileName,Main.getFolder()));
 				}
 			}
 		});

@@ -109,7 +109,10 @@ public class InputFile extends JFrame {
 				File filePath=OpenFileChooser.getSelectedFile();
 				textArea.setText(filePath.toString());
 				try {
-					readcsv.readcsvFolder(filePath);
+					if(filePath.toString().contains("Wigle"))
+					readcsv.readFile(filePath);
+					else
+						readcsv.readcsv_United(filePath.toString());
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

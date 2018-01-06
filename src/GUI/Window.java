@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Filters.Filter;
 import Main.Main;
 import Objects.WiFiList;
 import Tools.CreateCsv;
@@ -214,6 +215,9 @@ public class Window extends JFrame {
 		btnCancelFilter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				Filter filter2 = null;
+				Main.filter=filter2;
 			}
 		});
 		btnCancelFilter.addActionListener(new ActionListener() {
