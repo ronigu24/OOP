@@ -32,6 +32,67 @@ import Objects.WiFiList;
 
 public class readcsv {
 
+	public static ArrayList<WiFiList> readFile(File Folder) throws ParseException {
+		String Str;
+		String FileName = Folder.toString();
+		Date TimeDate = null;
+		double lat, lon, alt;
+		String ssid, mac;
+		int signal,channel;
+		try {
+			String[] Line;
+			
+				
+					FileReader fr = new FileReader(FileName);
+					BufferedReader br = new BufferedReader(fr);
+
+					Str = br.readLine();
+					Str = br.readLine();
+					Str = br.readLine();
+
+					while (Str != null) {
+
+						Line = Str.split(",");
+						lat = Double.parseDouble(Line[6]);
+						lon = Double.parseDouble(Line[7]);
+						alt = Double.parseDouble(Line[8]);
+
+						Point3D point=new Point3D(lat,lon,alt);
+
+						if (Line[3].contains("/")) {
+							TimeDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(Line[3]);
+
+						} else {
+							TimeDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(Line[3]);
+						}
+						ssid=Line[1];
+						mac=Line[0];
+						channel=Integer.parseInt(Line[4]);
+						signal =Integer.parseInt(Line[5]);
+
+						WiFi wifi = new WiFi(ssid,mac,channel,signal,TimeDate);
+						WiFiList wifilist = new WiFiList(TimeDate, point);
+
+						Str = br.readLine();
+						wifilist.add(wifi);
+						Main.Wifilist.add(wifilist);
+						Collections.sort(Main.Wifilist);
+					}
+
+
+					br.close();
+					fr.close();
+					Collections.sort(Main.Wifilist);
+				
+			
+		} catch (IOException ex) {
+			System.out.print("Error reading file\n" + ex);
+
+		}
+		return Main.Wifilist;
+	}
+	
+	
 	public static ArrayList<WiFiList> readcsvFolder(File Folder) throws ParseException {
 		String Str;
 		String FileName = Folder.toString();
@@ -168,9 +229,54 @@ public class readcsv {
 	}
 	
 	
+
+	public static ArrayList<WiFiList> readLine(String Str) throws ParseException, IOException {
+		ArrayList<WiFiList> AllWifi = new ArrayList<WiFiList>();
+		
+		Date TimeDate = null;
+		double lat, lon, alt;
+		String ssid, mac;
+		int signal,channel;
+		int place=0;
+		String[] Line;
+
+					Line = Str.split(",");
+					lat =0;
+					lon =0;
+					alt =0;
+
+					Point3D point=new Point3D(lat,lon,alt);
+					String date=Line[0].substring(0,14);
+					if (Line[0].contains("/")) {
+						
+						TimeDate = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(date);
+
+					} else {
+						TimeDate = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(date);
+					}
+					WiFiList wifilist = new WiFiList(TimeDate, point);
+
+					while(place+6<Line.length)
+					{		
+						ssid=Line[place+6];
+						mac=Line[place+7];
+						channel=Integer.parseInt(Line[place+8]);
+						signal =Integer.parseInt(Line[place+9]);
+
+						WiFi wifi = new WiFi(ssid,mac,channel,signal,TimeDate);
+
+						wifilist.add(wifi);
+						 place=place+4;
+						 //System.out.println(wifilist.getArray().size());
+					}
+					place=0;
+					AllWifi.add(wifilist);
+		return AllWifi;
+	}
+	
 	public static ArrayList<WiFiList> readcsv_United(String CsvFile) throws ParseException {
 		String Str;
-		
+		int count=0;
 		Date TimeDate = null;
 		double lat, lon, alt;
 		String ssid, mac;
@@ -184,16 +290,19 @@ public class readcsv {
 					
 
 					Str = br.readLine();
+					Str = br.readLine();
 
-					while (Str != null) {
+
+					while (Str != null&&Str.length()>9) {
 
 						Line = Str.split(",");
+					
 						lat =Double.parseDouble(Line[2]);
 						lon =Double.parseDouble(Line[3]);
 						alt =Double.parseDouble(Line[4]);
 
 						Point3D point=new Point3D(lat,lon,alt);
-						String date=Line[0].substring(0,14);
+						String date=Line[0].substring(0,16);
 						if (Line[0].contains("/")) {
 							
 							TimeDate = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(date);
@@ -209,7 +318,7 @@ public class readcsv {
 							ssid=Line[place+6];
 							mac=Line[place+7];
 							channel=Integer.parseInt(Line[place+8]);
-							signal =Integer.parseInt(Line[place+9]);
+							signal =(int)(Double.parseDouble((Line[place+9])));
 
 							WiFi wifi = new WiFi(ssid,mac,channel,signal,TimeDate);
 
@@ -220,6 +329,7 @@ public class readcsv {
 						Main.Wifilist.add(wifilist);
 						Collections.sort(Main.Wifilist);
 						Str = br.readLine();
+						
 					}
 
 

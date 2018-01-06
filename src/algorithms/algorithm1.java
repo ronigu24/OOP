@@ -1,81 +1,106 @@
 package algorithms;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import Objects.Point3D;
 import Objects.Router;
+import Objects.WiFi;
 import Objects.WiFiList;
 
 public class algorithm1 {
 
 
 
-	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile)
+	public static ArrayList<WiFiList> algorithm (ArrayList<WiFiList> CsvFile1)
 	{
-		ArrayList<WiFiList> arr=CsvFile;
-
+		ArrayList<WiFiList> arr=CsvFile1;
+		ArrayList<WiFiList> algo1=new ArrayList<WiFiList>();
+		int place=0;
 		Router[] routers= new Router[10];
 		int counter=1;
-		int signal;
+		int signal, channel,signal1 = 0;
 		String mac;
 		Point3D point;
 		Router router;
+		String SSID;
+		Point3D point1 = null;
+		java.util.Date date;
 
 		for (int i = 0; arr.get(i)!=null&&i<arr.size()-2; i++) {
-			
+
+			for (int j = 0; j < arr.get(i).getArray().size(); j++) {
+
+
 				point=(arr.get(i).getPoint());
-				mac=arr.get(i).getArray().get(0).getMAC();
-				signal=arr.get(i).getArray().get(0).getSignal();
+				mac=arr.get(i).getArray().get(j).getMAC();
+				signal=arr.get(i).getArray().get(j).getSignal();
 				router=new Router (point,signal);
 				routers[counter-1]=router;
+				SSID=arr.get(i).getArray().get(j).getSSID();
+				date=arr.get(i).getTimeStamp();
+				channel=arr.get(i).getArray().get(j).getChannel();
 
-
-				for(int k=i+1;arr.get(k)!=null&&k<arr.size()-1;k++)
+				for(int k=i+1;arr.get(k)!=null&&k<arr.size()-2;k++)
 				{
-					
-					if(arr.get(k).getArray().get(0).getMAC().equals(mac))
-					{
-						if(counter<10)
+					for (int l = 0; l < arr.get(k).getArray().size(); l++) {
+
+
+
+						if(arr.get(k).getArray().get(l).getMAC().equals(mac))
 						{
-							counter++;
-							point=(arr.get(k).getPoint());
-							signal=arr.get(k).getArray().get(0).getSignal();
-							router=new Router (point,signal);
-							routers[counter-1]=router;
-							arr.remove(k);
+							if(counter<10)
+							{
+								counter++;
+								point=(arr.get(k).getPoint());
+								signal=arr.get(k).getArray().get(l).getSignal();
+								router=new Router (point,signal);
+								routers[counter-1]=router;
+								//arr.get(k).getArray().remove(l);
+							}
+							arr.get(k).getArray().remove(l);
+
 						}
-						arr.remove(k);
+						if(arr.get(k).getArray().isEmpty())
+							arr.remove(k);
 					}
-					
-
 				}
-					
-			for(int l=0;l<counter-1;l++)
-			{
-				for(int m=l+1;m<counter;m++)
+
+
+				for(int l=0;l<counter-1;l++)
 				{
+					for(int m=l+1;m<counter;m++)
+					{
 
-					if(routers[l].getSignal()<routers[m].getSignal())
-						Swap(routers[l], routers[m]);
+						if(routers[l].getSignal()<routers[m].getSignal())
+							Swap(routers[l], routers[m]);
+					}
 				}
+				if(counter>=1&&counter<3)
+				{
+					 point1 =routers[0].getPoint();
+					 signal1=routers[0].getSignal();
+					
+				}
+
+				else if(counter>=3)
+				{
+					Router CenterRouter= WeightedCenterPoint(routers[0], routers[1], routers[2]);
+					 point1 =CenterRouter.getPoint();
+					 signal1=CenterRouter.getSignal();
+				
+				}			
+
+				
+				WiFi wifi = new WiFi(SSID,mac,channel,signal1,date);
+				WiFiList wifilist = new WiFiList(date, point1);
+
+				wifilist.add(wifi);
+				algo1.add(wifilist);
+				place++;
+				counter=1;			
 			}
-			if(counter>1&&counter<4)
-			{
-				arr.get(i).setPoint(routers[0].getPoint());
-				arr.get(i).getArray().get(0).setSignal(routers[0].getSignal());
-			}
-
-			if(counter!=1&&counter>=4)
-			{
-				Router CenterRouter= WeightedCenterPoint(routers[0], routers[1], routers[2]);
-				arr.get(i).setPoint(CenterRouter.getPoint());
-				arr.get(i).getArray().get(0).setSignal(CenterRouter.getSignal());
-			}			
-
-
-			counter=1;			
 		}
-
-		return arr;
+		return algo1;
 	}
 
 

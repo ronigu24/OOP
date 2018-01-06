@@ -7,15 +7,24 @@ import Objects.WiFi;
 import Objects.WiFiList;
 import uk.me.jstott.jcoord.LatLng;
 
+
+
 public class Filter {
-	private String filter;
 	private String value;
 	private Point3D place;
 	private double distance;
+	private String filter;
+
 
 	public Filter (String filter, String value){
 		this.filter = filter;
 		this.value = value;
+	}
+	public String getFilter() {
+		return filter;
+	}
+	public void setFilter(String filter) {
+		this.filter = filter;
 	}
 	public Filter (String filter, Point3D place, double distance){
 		this.filter = filter;
