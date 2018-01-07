@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Main.Main;
+import Objects.WiFiList;
 import Tools.CreateCsv;
 import Tools.readcsv;
 
@@ -19,6 +20,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
@@ -78,6 +80,8 @@ public class InputFolder extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
+					ArrayList<WiFiList> Wifilist1=new ArrayList<WiFiList>(Main.Wifilist);
+					Main.WifilistTemp=Wifilist1;
 					if(OpenFileChooser.getSelectedFile()!=null)
 					{
 						dispose();

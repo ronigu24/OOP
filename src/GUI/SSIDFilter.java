@@ -60,18 +60,15 @@ public class SSIDFilter extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				System.out.println(Main.WifilistTemp.size());
 				if(!textField_1.getText().isEmpty())
 				{
 					String SSID=textField_1.getText();
 					System.out.println(SSID);
 					Main.filter = new Filter("SSID", SSID);
 					String FileName = "SSID";
-					ArrayList<WiFiList> Wifilist1=new ArrayList<WiFiList>();
-					Wifilist1=Main.Wifilist;
-					System.out.println("wifilist 1:  "+Wifilist1.size());
-					Main.setWifilistTemp(Wifilist1);
-					System.out.println(Main.WifilistTemp.size());
-					//Main.setWifilistTemp(Main.getWifilist());
+					
 					Main.setWifilist(CreateCsv.ArrayByFilter(Main.Wifilist, Main.filter,FileName, Main.getFolder()));
 					dispose();
 				}

@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Main.Main;
+import Objects.WiFiList;
 import Tools.readcsv;
 
 import javax.swing.JLabel;
@@ -20,6 +21,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
@@ -113,6 +115,8 @@ public class InputFile extends JFrame {
 					readcsv.readFile(filePath);
 					else
 						readcsv.readcsv_United(filePath.toString());
+					ArrayList<WiFiList> Wifilist1=new ArrayList<WiFiList>(Main.Wifilist);
+					Main.WifilistTemp=Wifilist1;
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

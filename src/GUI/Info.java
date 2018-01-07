@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Main.Main;
+import Objects.WiFiList;
+import algorithms.algorithm1;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Info extends JFrame {
 
@@ -85,9 +88,11 @@ public class Info extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				records.setText(Integer.toString(Main.Wifilist.size()));
-System.out.println(Main.Wifilist.size());
+				int reco=Main.getWifilist().size();
+				String record=Integer.toString(reco);
+				records.setText(record);
+				 ArrayList<WiFiList> algo1=new ArrayList<WiFiList>(Main.Wifilist);
+				routers.setText(Integer.toString(algorithm1.algorithm(algo1).size()));
 				try {
 					if(Main.filter.getFilter()=="Date")
 						filter_pro.setText("Time");

@@ -78,7 +78,8 @@ public class Algorithm extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				if(!textField.getText().isEmpty())
+				{
 				 ArrayList<WiFiList> Algo1=algorithm1.algorithm(Main.Main.getWifilist());
 				for(int i=0;i<Algo1.size();i++)
 				{
@@ -91,6 +92,7 @@ public class Algorithm extends JFrame {
 						textArea.append("Lat: "+lat+"\n Lon:  "+lon+"\n Alt: "+alt);
 					}
 
+				}
 				}
 			}
 		});
