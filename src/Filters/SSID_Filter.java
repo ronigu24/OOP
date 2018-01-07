@@ -16,8 +16,11 @@ public class SSID_Filter {
 	public boolean test(WiFiList wifilist) {
 		
 		ArrayList<WiFi> array=wifilist.getArray();
+		if(!wifilist.getArray().isEmpty())
+		{
 	if (array.get(0).getSSID().toUpperCase().contains(value.toUpperCase()))
 		return true;
+		}
 	return false;
 	}
 }
