@@ -40,7 +40,7 @@ public class algorithm1 {
 				date=arr.get(i).getTimeStamp();
 				channel=arr.get(i).getArray().get(j).getChannel();
 
-				for(int k=i+1;arr.get(k)!=null&&k<arr.size()-1;k++)
+				for(int k=i+1;arr.get(k)!=null&&k<arr.size()-2;k++)
 				{
 					for (int l = 0; l < arr.get(k).getArray().size(); l++) {
 
