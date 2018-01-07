@@ -6,7 +6,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+
+import javax.swing.text.Position;
+
 import Filters.Filter;
+import Filters.Position_filter;
+import Filters.SSID_Filter;
+import Filters.Time_Filter;
 import Objects.Point3D;
 import Objects.WiFi;
 import Objects.WiFiList;
@@ -17,6 +23,8 @@ import de.micromata.opengis.kml.v_2_2_0.Folder;
  */
 
 public class CreateCsv {
+
+	private static Object SSID_Filter;
 
 	/**
 	 @param This function gets arrayList<wifiList> and create new united CSV.
@@ -98,25 +106,62 @@ public class CreateCsv {
 	}
 
 	/**
+	 * @param ssid 
 	 * @param get
 	 *            filter ,file name and arrayList<wifiList>, and create new CSV
 	 *            who filtered by this filter. the file name will be the name of
 	 *            the Csv file.
 	 */
 
-	public static ArrayList<WiFiList> WriteByFilter(ArrayList<WiFiList> One_Csv_File, Filter filter, String FileName,File folder) {
+	public static ArrayList<WiFiList> ArrayByFilter(ArrayList<WiFiList> One_Csv_File, Filter filter, String FileName,File folder) {
 
-		for (int i = 0; i < One_Csv_File.size(); i++) {
-			if (false == filter.isFit(One_Csv_File.get(i)) && One_Csv_File.get(i) != null) {
 
-				One_Csv_File.remove(i);
-				i--;
+		if(filter.getFilter()=="SSID")
+		{
+			 SSID_Filter ssid1 = new SSID_Filter(filter.getValue());
+				for (int i = 0; i < One_Csv_File.size(); i++) {
+					if (false == ssid1.test(One_Csv_File.get(i)) && One_Csv_File.get(i) != null) {
 
-			}
+						One_Csv_File.remove(i);
+						i--;
 
+					}
+
+				}
 		}
+		if(filter.getFilter()=="Distance")
+		{
+			 Position_filter pos = new Position_filter(filter.getPlace(),filter.getDistance());
+				for (int i = 0; i < One_Csv_File.size(); i++) {
+					if (false == pos.test(One_Csv_File.get(i)) && One_Csv_File.get(i) != null) {
+
+						One_Csv_File.remove(i);
+						i--;
+
+					}
+
+				}
+		}
+		if(filter.getFilter()=="Date")
+		{
+			 Time_Filter time = new Time_Filter(filter.getValue());
+				for (int i = 0; i < One_Csv_File.size(); i++) {
+					if (false == time.test(One_Csv_File.get(i)) && One_Csv_File.get(i) != null) {
+
+						One_Csv_File.remove(i);
+						i--;
+
+					}
+
+				}
+		}
+		
+			
+
+	
+		CreateCsv.WriterCsv(One_Csv_File, FileName,folder);
 		return One_Csv_File;
-		//CreateCsv.WriterCsv(One_Csv_File, FileName,folder);
+		
 
 	}
 
