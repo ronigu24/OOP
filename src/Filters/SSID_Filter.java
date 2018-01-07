@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import Objects.WiFi;
 import Objects.WiFiList;
 
-public class ID_Filter {
+public class SSID_Filter {
 
 	private String value;
 	
-	public  ID_Filter(String value)
+	public  SSID_Filter(String value)
 	{
 		this.value=value;
 	}

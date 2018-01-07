@@ -2,6 +2,8 @@ package Filters;
 
 
 
+import java.util.ArrayList;
+
 import Objects.Point3D;
 import Objects.WiFi;
 import Objects.WiFiList;
@@ -34,13 +36,12 @@ public class Filter {
 	}
 	public boolean isFit(WiFiList wifilist){
 
-		
 
 		switch(filter){
 		
 		
 		case "SSID":{
-			ID_Filter filter=new ID_Filter(value);
+			SSID_Filter filter=new SSID_Filter(value);
 			filter.test(wifilist);
 			}
 		break;
@@ -59,6 +60,24 @@ public class Filter {
 
 		}
 		return false;
+	}
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	public Point3D getPlace() {
+		return place;
+	}
+	public void setPlace(Point3D place) {
+		this.place = place;
+	}
+	public double getDistance() {
+		return distance;
+	}
+	public void setDistance(double distance) {
+		this.distance = distance;
 	}
 }
 
