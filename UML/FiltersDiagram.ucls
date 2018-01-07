@@ -6,7 +6,7 @@
     <position height="81" width="129" x="563" y="17"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="2" language="java" name="Filters.ID_Filter" project="OOP" file="/OOP/src/Filters/ID_Filter.java" 
+  <class id="2" language="java" name="Filters.SSID_Filter" project="OOP" file="/OOP/src/Filters/SSID_Filter.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="166" y="183"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
