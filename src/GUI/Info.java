@@ -88,12 +88,13 @@ public class Info extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int reco=Main.getWifilist().size();
-				String record=Integer.toString(reco);
-				records.setText(record);
-				 ArrayList<WiFiList> algo1=new ArrayList<WiFiList>(Main.Wifilist);
-				routers.setText(Integer.toString(algorithm1.algorithm(algo1).size()));
+				
 				try {
+					int reco=Main.getWifilist().size();
+					String record=Integer.toString(reco);
+					records.setText(record);
+					 ArrayList<WiFiList> algo1=new ArrayList<WiFiList>(Main.Wifilist);
+					routers.setText(Integer.toString(algorithm1.algorithm(algo1).size()));
 					if(Main.filter.getFilter()=="Date")
 						filter_pro.setText("Time");
 					if(Main.filter.getFilter()=="SSID")

@@ -21,8 +21,8 @@ import java.awt.event.MouseEvent;
 public class LocationFilter extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_1;
 	private JTextField textField;
+	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 
@@ -63,7 +63,7 @@ public class LocationFilter extends JFrame {
 		btnOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(!textField.getText().isEmpty()&&!textField_1.getText().isEmpty()&&!textField_3.getText().isEmpty())
+				if(!textField.getText().isEmpty()&&!textField.getText().isEmpty()&&!textField_3.getText().isEmpty())
 				{
 					double lat=Double.parseDouble(textField.getText());
 					double lon=Double.parseDouble(textField_1.getText());
@@ -87,10 +87,10 @@ public class LocationFilter extends JFrame {
 		lblEnterMac.setBounds(15, 52, 193, 20);
 		contentPane.add(lblEnterMac);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(144, 92, 158, 26);
-		contentPane.add(textField_1);
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(144, 92, 158, 26);
+		contentPane.add(textField);
 
 		JLabel lblMaxTime = new JLabel("Alt:");
 		lblMaxTime.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -112,10 +112,10 @@ public class LocationFilter extends JFrame {
 		lblDistancekm.setBounds(15, 209, 145, 20);
 		contentPane.add(lblDistancekm);
 
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(144, 128, 158, 26);
-		contentPane.add(textField);
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(144, 128, 158, 26);
+		contentPane.add(textField_1);
 
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);

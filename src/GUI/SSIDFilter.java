@@ -61,7 +61,7 @@ public class SSIDFilter extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				System.out.println(Main.WifilistTemp.size());
+				//System.out.println(Main.WifilistTemp.size());
 				if(!textField_1.getText().isEmpty())
 				{
 					String SSID=textField_1.getText();

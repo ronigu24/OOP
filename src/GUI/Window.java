@@ -43,6 +43,7 @@ public class Window extends JFrame {
 				try {
 					Window frame = new Window();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
