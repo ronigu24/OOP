@@ -11,6 +11,7 @@ import Main.Main;
 import Objects.WiFiList;
 import Tools.CreateCsv;
 import Tools.CreateKml;
+import Tools.readcsv;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -218,6 +219,11 @@ public class Window extends JFrame {
 				
 				Filter filter2 = null;
 				Main.filter=filter2;
+				System.out.println("wifi1 :  "+Main.WifilistTemp.size());
+				System.out.println("wifi :  "+Main.Wifilist.size());
+
+				Main.setWifilist(Main.getWifilistTemp());
+				System.out.println(Main.Wifilist.size());
 			}
 		});
 		btnCancelFilter.addActionListener(new ActionListener() {
@@ -231,8 +237,12 @@ public class Window extends JFrame {
 		btnSave_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				CreateCsv.WriterCsv(Main.getWifilist(), "byfilter", Main.getFolder());
+				String fileName=Main.filter.getFilter();
+				if(Main.filter!=null)
+				{
+					CreateCsv.ArrayByFilter(Main.Wifilist, Main.filter,fileName , Main.Mainfolder);
+				}
+				CreateCsv.WriterCsv(Main.getWifilist(), fileName, Main.Mainfolder);
 			}
 		});
 		btnSave_1.setBounds(305, 337, 152, 29);

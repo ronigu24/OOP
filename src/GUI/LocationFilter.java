@@ -73,7 +73,8 @@ public class LocationFilter extends JFrame {
 					Point3D place = new Point3D(lat, lon, 0);
 					Main.filter = new Filter("Distance", place, distance);
 					String FileName = "DistanceCSV";
-					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), Main.filter,FileName, Main.getFolder()));
+					Main.WifilistTemp=Main.Wifilist;
+					Main.setWifilist(CreateCsv.ArrayByFilter(Main.getWifilist(), Main.filter,FileName, Main.getFolder()));
 					dispose();
 				}
 			}

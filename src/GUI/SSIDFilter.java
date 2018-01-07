@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class SSIDFilter extends JFrame {
 
@@ -62,9 +63,16 @@ public class SSIDFilter extends JFrame {
 				if(!textField_1.getText().isEmpty())
 				{
 					String SSID=textField_1.getText();
-					 Main.filter = new Filter("SSID", SSID);
+					System.out.println(SSID);
+					Main.filter = new Filter("SSID", SSID);
 					String FileName = "SSID";
-					Main.setWifilist(CreateCsv.WriteByFilter(Main.getWifilist(), Main.filter,FileName, Main.getFolder()));
+					ArrayList<WiFiList> Wifilist1=new ArrayList<WiFiList>();
+					Wifilist1=Main.Wifilist;
+					System.out.println("wifilist 1:  "+Wifilist1.size());
+					Main.setWifilistTemp(Wifilist1);
+					System.out.println(Main.WifilistTemp.size());
+					//Main.setWifilistTemp(Main.getWifilist());
+					Main.setWifilist(CreateCsv.ArrayByFilter(Main.Wifilist, Main.filter,FileName, Main.getFolder()));
 					dispose();
 				}
 			}

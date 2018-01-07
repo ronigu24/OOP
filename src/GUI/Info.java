@@ -87,7 +87,7 @@ public class Info extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				records.setText(Integer.toString(Main.Wifilist.size()));
-
+System.out.println(Main.Wifilist.size());
 				try {
 					if(Main.filter.getFilter()=="Date")
 						filter_pro.setText("Time");
