@@ -13,10 +13,8 @@ import Tools.readcsv;
 
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.TextArea;
 
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -28,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class InputFile extends JFrame {
 
 	private JPanel contentPane;
@@ -108,7 +107,9 @@ public class InputFile extends JFrame {
 				OpenFileChooser.setCurrentDirectory(new File("c:"));
 				OpenFileChooser.setFileFilter(new FileNameExtensionFilter("CSV FIles", "csv"));
 				OpenFileChooser.showOpenDialog(button);
+				
 				File filePath=OpenFileChooser.getSelectedFile();
+				Main.folder=filePath.getParentFile();
 				textArea.setText(filePath.toString());
 				try {
 					if(filePath.toString().contains("Wigle"))

@@ -5,17 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import Main.Main;
 import Objects.WiFiList;
-import Tools.CreateCsv;
 import Tools.readcsv;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -111,6 +107,7 @@ public class InputFolder extends JFrame {
 
 				OpenFileChooser.showOpenDialog(button);
 				File filePath=OpenFileChooser.getSelectedFile();
+				Main.folder=OpenFileChooser.getSelectedFile();
 				textArea.setText(filePath.toString());
 				try {
 					readcsv.readcsvFolder(filePath);

@@ -19,6 +19,10 @@ import java.awt.event.MouseEvent;
 
 public class TimeFilter extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField minimum;
 	private JTextField maximum;

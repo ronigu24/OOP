@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.tools.Tool;
 
 import Filters.Filter;
 import Main.Main;
@@ -130,7 +131,13 @@ public class Window extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				CreateCsv.make10List(Main.getWifilist(), Main.getFolder());
+				try {
+					CreateCsv.make10List(Main.Wifilist, Main.folder);
+					System.out.println("Csv Created");
+				} catch (IOException | ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnSave.addActionListener(new ActionListener() {
@@ -144,16 +151,17 @@ public class Window extends JFrame {
 		btnSaveToKml.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				File path=new File("C:\\Users\\RoniGu\\git\\OOPnew\\CSVFile\\FinalCsv\\FinalCSV.csv");
+			
 				try {
-					CreateKml.csvtokml(path);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (ParseException e1) {
+					File fold=new File(Main.folder+"\\FinalCSV.csv");
+					CreateCsv.make10List(Main.Wifilist, Main.folder);
+					//CreateKml.csvtokml(fold);
+					System.out.println("Kml Created");
+				} catch (IOException | ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
 			}
 		});
 		btnSaveToKml.setBounds(85, 337, 152, 29);

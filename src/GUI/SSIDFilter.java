@@ -17,8 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class SSIDFilter extends JFrame {
 
 	private JPanel contentPane;
