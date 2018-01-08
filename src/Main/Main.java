@@ -14,7 +14,6 @@ import Objects.WiFiList;
 import Tools.CreateCsv;
 import Tools.CreateKml;
 import Tools.readcsv;
-import algorithms.algorithm1;
 
 
 public class Main {
@@ -39,8 +38,8 @@ public static File getFolder() {
 		Main.folder = folder;
 	}
 
-public static 	File folder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile\\BM2");
-public static 	File Mainfolder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile");
+public static 	File folder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile");
+public static 	File Mainfolder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile\\BM2");
 
 public static Filter filter;
 
@@ -65,8 +64,8 @@ public static void setWifilist(ArrayList<WiFiList> wifilist) {
 		System.out.println("What is your username of your computer?");
 		username=sc.next();
 
-		 Wifilist = readcsv.readcsvFolder(folder);
-		CreateCsv.WriterCsv(Wifilist, "InitCsv", folder);
+		 Wifilist = readcsv.readcsvFolder(Mainfolder);
+		CreateCsv.WriterCsv(Wifilist, "InitCsv", Mainfolder);
 		
 
 		Filter filter = null;
@@ -100,8 +99,8 @@ public static void setWifilist(ArrayList<WiFiList> wifilist) {
 			end = sc.nextLine();
 			filter = new Filter("Date", start + ";" + end);
 			FileName = "TimeCSV";
-			CreateCsv.ArrayByFilter(Wifilist, filter, FileName,folder);
-			CreateCsv.make10List(Wifilist,folder);
+			CreateCsv.ArrayByFilter(Wifilist, filter, FileName,Mainfolder);
+			CreateCsv.make10List(Wifilist,Mainfolder);
 		}
 			break;
 		case 3: {
@@ -117,28 +116,23 @@ public static void setWifilist(ArrayList<WiFiList> wifilist) {
 			place = new Point3D(lat, lon, 0);
 			filter = new Filter("Distance", place, distance);
 			FileName = "DistanceCSV";
-			CreateCsv.ArrayByFilter(Wifilist, filter,FileName, folder);
+			CreateCsv.ArrayByFilter(Wifilist, filter,FileName, Mainfolder);
 			
-			CreateCsv.make10List(Wifilist,folder);
+			CreateCsv.make10List(Wifilist,Mainfolder);
 			break;
 		}
 
 		case 4: {
-
-			//CreateCsv.WriterCsv(algorithm1.algorithm((Wifilist)), "CsvByMac",folder);
-			//CreateCsv.make10List(Wifilist,folder);
 			
 			ArrayList<WiFiList> united=new ArrayList<WiFiList>();
-			united = readcsv.readcsv_United(folder+"\\comb\\_comb_all_.csv");
-			System.out.println(united.size());
-			CreateCsv.WriterCsv((algorithms.algorithm1.algorithm(united)),"algo1",folder);
-			System.out.println(united.size());
+			united = readcsv.readcsv_United(Mainfolder+"\\comb\\_comb_all_.csv");
+			CreateCsv.WriterCsv((algorithms.algorithm1.algorithm(united)),"algo1",Mainfolder);
 
 		}
 			break;
 
 		case 5: {
-			Wifilist=CreateCsv.make10List(Wifilist,folder);
+			Wifilist=CreateCsv.make10List(Wifilist,Mainfolder);
 			File folder_No_Gps = new File("C:\\Users\\"+username+"\\Desktop\\CSVFile\\BM2\\No_Gps");
 			ArrayList<WiFiList> No_Gps = readcsv.readcsv_NoGps(folder_No_Gps);
 			ArrayList<WiFiList> Found_Gps=algorithms.algorithm2.algorithm(Wifilist, No_Gps);
@@ -147,7 +141,7 @@ public static void setWifilist(ArrayList<WiFiList> wifilist) {
 			break;
 		case 6: {
 
-			CreateCsv.make10List(Wifilist,folder);
+			CreateCsv.make10List(Wifilist,Mainfolder);
 
 		}
 		}
