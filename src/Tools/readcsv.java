@@ -276,7 +276,6 @@ public class readcsv {
 	
 	public static ArrayList<WiFiList> readcsv_United(String CsvFile) throws ParseException {
 		String Str;
-		int count=0;
 		Date TimeDate = null;
 		double lat, lon, alt;
 		String ssid, mac;
