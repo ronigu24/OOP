@@ -85,15 +85,12 @@ public class CreateKml {
 			str = br.readLine();
 
 		}
-		String KmlFile = "C:\\Users\\username\\Desktop\\CSVFile\\KMLFile\\kmlFile";
 		try {
-			kml.marshal(new File(KmlFile));
-			System.out.println("kml create");
+			kml.marshal((Main.Main.folder));
 
 		} catch (Exception e) {
 
 		}
-		System.out.println("kml created");
 
 	}
 
