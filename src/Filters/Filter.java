@@ -2,10 +2,8 @@ package Filters;
 
 
 
-import java.util.ArrayList;
 
 import Objects.Point3D;
-import Objects.WiFi;
 import Objects.WiFiList;
 import uk.me.jstott.jcoord.LatLng;
 
