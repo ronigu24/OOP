@@ -3,12 +3,12 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <package id="1" language="java" name="Filters" project="OOP" file="/OOP/src/Filters" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="81" width="129" x="563" y="17"/>    
+    <position height="81" width="129" x="508" y="15"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="2" language="java" name="Filters.SSID_Filter" project="OOP" file="/OOP/src/Filters/SSID_Filter.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="166" y="183"/>    
+    <position height="-1" width="-1" x="295" y="488"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -17,7 +17,7 @@
   </class>  
   <class id="3" language="java" name="Filters.Position_filter" project="OOP" 
     file="/OOP/src/Filters/Position_filter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="401" y="187"/>    
+    <position height="-1" width="-1" x="573" y="494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -26,7 +26,7 @@
   </class>  
   <class id="4" language="java" name="Filters.Time_Filter" project="OOP" file="/OOP/src/Filters/Time_Filter.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="688" y="183"/>    
+    <position height="-1" width="-1" x="851" y="485"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -35,8 +35,8 @@
   </class>  
   <class id="5" language="java" name="Filters.Filter" project="OOP" file="/OOP/src/Filters/Filter.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="963" y="212"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="257" width="224" x="459" y="118"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
