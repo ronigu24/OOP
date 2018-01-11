@@ -42,6 +42,7 @@ public static 	File folder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile
 public static 	File Mainfolder = new File("C:\\Users\\"+"RoniGu"+"\\Desktop\\CSVFile\\BM2");
 
 public static Filter filter;
+public static Filter filter2;
 
 
 	public static ArrayList<WiFiList> getWifilist() {
