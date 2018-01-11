@@ -111,6 +111,8 @@ public class InputFolder extends JFrame {
 				textArea.setText(filePath.toString());
 				try {
 					readcsv.readcsvFolder(filePath);
+					Thread thread = new Thread(new Thread_listens());
+					thread.start();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

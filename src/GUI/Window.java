@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.JInternalFrame;
+import javax.swing.SwingConstants;
 
 public class Window extends JFrame {
 
@@ -132,7 +133,7 @@ public class Window extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				try {
-					CreateCsv.make10List(Main.Wifilist, Main.folder);
+					CreateCsv.make10List(Main.Wifilist, Main.folder.getParentFile());
 					System.out.println("Csv Created");
 				} catch (IOException | ParseException e1) {
 					// TODO Auto-generated catch block
@@ -153,7 +154,7 @@ public class Window extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			
 				try {
-					File fold=new File(Main.folder+"\\FinalCSV.csv");
+					File fold=new File(Main.folder.getParentFile()+"\\FinalCSV.csv");
 					CreateCsv.make10List(Main.Wifilist, Main.folder);
 					//CreateKml.csvtokml(fold);
 					System.out.println("Kml Created");
@@ -261,7 +262,8 @@ public class Window extends JFrame {
 		btnSave_1.setBounds(305, 337, 152, 29);
 		contentPane.add(btnSave_1);
 
-		JButton btnAddFilter = new JButton("Add Filter");
+		JButton btnAddFilter = new JButton("Filter combination");
+		btnAddFilter.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAddFilter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
