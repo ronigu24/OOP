@@ -49,7 +49,6 @@ public class Filter_Comb extends JFrame {
 	 * Create the frame.
 	 */
 	public Filter_Comb() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 707, 555);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
