@@ -164,13 +164,53 @@ public class Algorithm2 extends JFrame {
 		lblEnterMac.setBounds(125, 51, 105, 20);
 		contentPane.add(lblEnterMac);
 
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Scan Line");
-		rdbtnNewRadioButton.setBounds(15, 83, 155, 29);
-		contentPane.add(rdbtnNewRadioButton);
+		JRadioButton linebt = new JRadioButton("Scan Line");
+		linebt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(linebt.isSelected())
+				{
+					mac1.setEditable(false);
+					mac2.setEditable(false);
+					mac3.setEditable(false);
+					signal1.setEditable(false);
+					signal2.setEditable(false);
+					signal3.setEditable(false);
+				}
+				if(!linebt.isSelected())
+				{
+					mac1.setEditable(true);
+					mac2.setEditable(true);
+					mac3.setEditable(true);
+					signal1.setEditable(true);
+					signal2.setEditable(true);
+					signal3.setEditable(true);
 
-		JRadioButton rdbtnMacsignalupTo = new JRadioButton("Mac&signal (up to 3)");
-		rdbtnMacsignalupTo.setBounds(15, 162, 217, 29);
-		contentPane.add(rdbtnMacsignalupTo);
+					
+				}
+			}
+		});
+		linebt.setBounds(15, 83, 155, 29);
+		contentPane.add(linebt);
+
+		JRadioButton macsigbt = new JRadioButton("Mac&signal (up to 3)");
+		macsigbt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(macsigbt.isSelected())
+				{
+					scanline.setEditable(false);
+				}
+				if(!macsigbt.isSelected())
+				{
+					scanline.setEditable(true);
+				}
+			}
+		});
+		macsigbt.setBounds(15, 162, 217, 29);
+		contentPane.add(macsigbt);
 
 		mac1 = new JTextField();
 		mac1.setBounds(15, 232, 131, 26);

@@ -6,18 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.xml.ws.AsyncHandler;
+
+import de.micromata.opengis.kml.v_2_2_0.AltitudeMode;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Filter_Comb extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField lat;
 	private JTextField lon;
-	private JTextField textField_2;
+	private JTextField alt;
 	private JTextField distance;
 	private JTextField min;
 	private JTextField max;
@@ -55,20 +61,137 @@ public class Filter_Comb extends JFrame {
 		lblFilterCombination.setBounds(226, 16, 201, 69);
 		contentPane.add(lblFilterCombination);
 		
-		JRadioButton radioButton = new JRadioButton("Time");
-		radioButton.setFont(new Font("Segoe UI Semilight", Font.BOLD, 18));
-		radioButton.setBounds(61, 86, 155, 29);
-		contentPane.add(radioButton);
+		JRadioButton timebt = new JRadioButton("Time");
+		timebt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(timebt.isSelected())
+				{
+					min.setEditable(true);
+					max.setEditable(true);
+				}
+				if(!timebt.isSelected())
+				{
+					min.setEditable(false);
+					max.setEditable(false);
+				}
+				
+				
+			}
+		});
+		JRadioButton and = new JRadioButton("And");
+		JRadioButton or = new JRadioButton("Or");
+		JRadioButton not = new JRadioButton("Not");
+
+		or.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(or.isSelected())
+				{
+					and.setEnabled(false);
+					not.setEnabled(false);
+				}
+				if(!or.isSelected())
+				{
+					and.setEnabled(true);
+					not.setEnabled(true);
+				}
+				
+			}
+		});
+		and.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(and.isSelected())
+				{
+					or.setEnabled(false);
+					not.setEnabled(false);
+				}
+				if(!and.isSelected())
+				{
+					or.setEnabled(true);
+					not.setEnabled(true);
+				}
+			}
+		});
+	
+		not.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(not.isSelected())
+				{
+					and.setEnabled(false);
+					or.setEnabled(false);
+				}
+				if(!not.isSelected())
+				{
+					and.setEnabled(true);
+					or.setEnabled(true);
+				}
+			}
+		});
+		not.setFont(new Font("Segoe UI Semilight", Font.BOLD | Font.ITALIC, 18));
+		not.setBounds(111, 390, 97, 29);
+		contentPane.add(not);
 		
-		JRadioButton rdbtnSsid = new JRadioButton("SSID");
-		rdbtnSsid.setFont(new Font("Segoe UI Semilight", Font.BOLD, 18));
-		rdbtnSsid.setBounds(285, 86, 155, 29);
-		contentPane.add(rdbtnSsid);
+		and.setFont(new Font("Segoe UI Semilight", Font.BOLD | Font.ITALIC, 18));
+		and.setBounds(247, 389, 97, 29);
+		contentPane.add(and);
 		
-		JRadioButton rdbtnPosition = new JRadioButton("Position");
-		rdbtnPosition.setFont(new Font("Segoe UI Semilight", Font.BOLD, 18));
-		rdbtnPosition.setBounds(500, 86, 155, 29);
-		contentPane.add(rdbtnPosition);
+		or.setFont(new Font("Segoe UI Semilight", Font.BOLD | Font.ITALIC, 18));
+		or.setBounds(390, 389, 97, 29);
+		contentPane.add(or);
+		timebt.setFont(new Font("Segoe UI Semilight", Font.BOLD, 18));
+		timebt.setBounds(61, 86, 155, 29);
+		contentPane.add(timebt);
+		
+		JRadioButton ssidbt = new JRadioButton("SSID");
+		ssidbt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(ssidbt.isSelected())
+				{
+					ssid.setEditable(true);
+				}
+				if(!ssidbt.isSelected())
+				{
+					ssid.setEditable(false);
+				}
+			}
+		});
+		ssidbt.setFont(new Font("Segoe UI Semilight", Font.BOLD, 18));
+		ssidbt.setBounds(285, 86, 155, 29);
+		contentPane.add(ssidbt);
+		
+		JRadioButton posbt = new JRadioButton("Position");
+		posbt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(posbt.isSelected())
+				{
+					lat.setEditable(true);
+					lon.setEditable(true);
+					alt.setEditable(true);
+					distance.setEditable(true);		
+				}
+				if(!posbt.isSelected())
+				{
+					lat.setEditable(false);
+					lon.setEditable(false);
+					alt.setEditable(false);
+					distance.setEditable(false);		
+				}
+			}
+		});
+		posbt.setFont(new Font("Segoe UI Semilight", Font.BOLD, 18));
+		posbt.setBounds(500, 86, 155, 29);
+		contentPane.add(posbt);
 		
 		JLabel label = new JLabel("Enter your loaction:");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -81,21 +204,25 @@ public class Filter_Comb extends JFrame {
 		contentPane.add(label_1);
 		
 		lat = new JTextField();
+		lat.setEditable(false);
 		lat.setColumns(10);
 		lat.setBounds(512, 176, 158, 26);
 		contentPane.add(lat);
 		
 		lon = new JTextField();
+		lon.setEditable(false);
 		lon.setColumns(10);
 		lon.setBounds(512, 218, 158, 26);
 		contentPane.add(lon);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(512, 262, 158, 26);
-		contentPane.add(textField_2);
+		alt = new JTextField();
+		alt.setEditable(false);
+		alt.setColumns(10);
+		alt.setBounds(512, 262, 158, 26);
+		contentPane.add(alt);
 		
 		distance = new JTextField();
+		distance.setEditable(false);
 		distance.setColumns(10);
 		distance.setBounds(512, 308, 158, 26);
 		contentPane.add(distance);
@@ -136,34 +263,22 @@ public class Filter_Comb extends JFrame {
 		contentPane.add(lblEnterMinmaxTime);
 		
 		min = new JTextField();
+		min.setEditable(false);
 		min.setColumns(10);
 		min.setBounds(15, 218, 158, 26);
 		contentPane.add(min);
 		
 		max = new JTextField();
+		max.setEditable(false);
 		max.setColumns(10);
 		max.setBounds(15, 308, 158, 26);
 		contentPane.add(max);
 		
 		ssid = new JTextField();
+		ssid.setEditable(false);
 		ssid.setColumns(10);
 		ssid.setBounds(244, 176, 158, 26);
 		contentPane.add(ssid);
-		
-		JRadioButton not = new JRadioButton("Not");
-		not.setFont(new Font("Segoe UI Semilight", Font.BOLD | Font.ITALIC, 18));
-		not.setBounds(111, 389, 97, 29);
-		contentPane.add(not);
-		
-		JRadioButton and = new JRadioButton("And");
-		and.setFont(new Font("Segoe UI Semilight", Font.BOLD | Font.ITALIC, 18));
-		and.setBounds(247, 389, 97, 29);
-		contentPane.add(and);
-		
-		JRadioButton or = new JRadioButton("Or");
-		or.setFont(new Font("Segoe UI Semilight", Font.BOLD | Font.ITALIC, 18));
-		or.setBounds(390, 389, 97, 29);
-		contentPane.add(or);
 		
 		JButton button = new JButton("Ok");
 		button.setBounds(266, 454, 115, 29);

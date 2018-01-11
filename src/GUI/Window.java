@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import javax.swing.JInternalFrame;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class Window extends JFrame {
 
 	private JPanel contentPane;
@@ -267,6 +268,9 @@ public class Window extends JFrame {
 		btnAddFilter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				Filter_Comb frame = new Filter_Comb();
+				frame.setVisible(true);
 			}
 		});
 		btnAddFilter.addActionListener(new ActionListener() {
